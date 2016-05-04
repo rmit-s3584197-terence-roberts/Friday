@@ -1,0 +1,16 @@
+<div class="properties index">
+	<h2>Where will you be on Friday?</h2>
+
+	<table class="listing" summary = "property list">
+		<tr class="header">
+			<th>Country</th>
+			<th>City</th>
+		</tr>
+		<% @properties.each do |property| %>
+		<tr>
+			<td><%= property.city %></td>
+			<td><%= property.country %></td>
+		</tr>
+		<% end %>
+	</table>
+</div>

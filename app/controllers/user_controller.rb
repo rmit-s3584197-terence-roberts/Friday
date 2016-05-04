@@ -4,6 +4,7 @@ class UserController < ApplicationController
   #before_action :confirm_logged_in
 
   def index
+    @properties = Property.all
   end
 
   def new

@@ -4,33 +4,29 @@
 	</div>
 <% end %>
 
-
-
-<div class="friusers show">
-	<h2>Show Property</h2>
-<%= link_to("<< Go back", { :action => 'showall',}, :class => 'back-link') %>
-	<table summary="Friproperties detail view">
+<div class="user show">
+  <h2>Where will you be on Friday?</h2>
+  
+  <table summary="properties detail view">
 	<tr>
-		<th>Name</th>
-		<td><%= @pro.proname %></td>
-	</tr>
-
-	<tr>
-		<th>Address</th>
-		<td><%= @pro.details_address + @pro.city+ @pro.country %></td>
+	  <th>Name</th>
+	  <!-- To do: Add image of property rather than name here -->
+	  <td><%= @property.name %></td>  
 	</tr>
 	<tr>
-		<th>Need Points</th>
-		<td><%= @pro.needpoints %></td>
+	  <th>Location</th>
+	  <td><%= @property.city + ", " + @property.country %></td>
 	</tr>
 	<tr>
-		<th>Reviews</th>
-		<td><%= "To be continue" %></td>
+	  <th>Points Required</th>
+	  <td><%= @property.num_points %></td>
 	</tr>
-
+	<tr>
+	  <th>Reviews</th>
+	  <td><%= "Coming soon..." %></td>
+	</tr>
 	</table>
+	
 	<br />
-	
-<br />
-	
+	<br />
 </div>
