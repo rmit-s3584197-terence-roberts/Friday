@@ -1,31 +1,31 @@
 <% if !flash[:notice].blank? %>
 <div class="notice">
-	<%= flash[:notice] %>
+<%= flash[:notice] %>
 </div>
 <% end %>
 
-	<%= render(:partial => '/user/header') %> 
+<%= render(:partial => '/user/header') %> 
 
 
 <div class="properties index">
-	<h2>Where will you be on Friday?</h2>
+<h2>Where will you be on Friday?</h2>
 
-	<div class="container-float">
-		<div class="row">
-			<% @properties.each do |property| %>
-			<% user = User.find_by_id(property.user_id) %>
-			<% image = property.photo.url %>
-			<div class="col-lg-4 col-xs-3 col-lg-4 thumb">
-			<a class="thumbnail" href= <% link_to(" ", {:action => 'show', :id => property}) %>  >
-					<img class="img-responsive" src= <%= "#{image}" %> alt="">
-				</a>
-				Stay with <%= link_to("#{user.first_name.camelize}", 
-				{:controller => 'user', :action => 'show', :id => user}) %> 
-				in <%= property.city.camelize %>
-			</div>
-		<% end %>
+<div class="container-float">
+  <div class="row">
+    <% @properties.each do |property| %>
+	  <% user = User.find_by_id(property.user_id) %>
+	    <% image = property.photo.url %>
+		  <div class="col-lg-4 col-xs-3 col-lg-4 thumb">
+		      <a class="thumbnail" href= <%= "/properties/show/#{property.id}" %> >
+		        <img class="img-responsive" src= <%= "#{image}" %> alt="">
+		      </a>
+		  Stay with <%= link_to("#{user.first_name.camelize}", 
+			{:controller => 'user', :action => 'show', :id => user}) %> 
+			in <%= property.city.camelize %>
 		</div>
-
-
+	<% end %>
 	</div>
+
+
+</div>
 </div>
