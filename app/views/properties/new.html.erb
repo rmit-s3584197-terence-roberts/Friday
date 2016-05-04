@@ -2,7 +2,7 @@
 <div class="properties new">
   <h2>Add New Property</h2>
 
-  <%= form_for(:property, :url => {:action => 'create'}) do |f| %>
+  <%= form_for(:property, :url => {:action => 'create'}, :html => { :multipart => true}) do |f| %>
   	<table summary="properties form fields">
   	<tr>
   	  <th>Property name</th>
@@ -52,7 +52,10 @@
   	  <th>Discount for above three weeks</th>
   	  <td><%= f.number_field(:discount, in: 1..99, :step => "any")%> %</td>
   	</tr>
-
+    <tr>
+      <th>Photo</th>
+      <td><%= f.file_field :photo %> </td>
+    </tr>
 
   	</table>
 

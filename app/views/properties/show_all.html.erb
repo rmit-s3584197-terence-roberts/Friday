@@ -6,8 +6,6 @@
 <div class="properties index">
 	<h2>Where will you be on Friday?</h2>
 
-
-
 	<table class="listing" summary = "property list">
 		<tr class="header">
 			<th>Property Name</th>
@@ -22,10 +20,6 @@
 			<td><%= "#{user.first_name} #{user.last_name}" %></td>
 			<td><%= property.country %></td>
 			<td><%= property.city %></td>
-			<td class="actions">
-				<%= link_to("Show", {:action => 'browseshow', :id => property.id}, :class => 'action show') %>
-				
-			</td>
 		</tr>
 		<% end %>
 	</table>

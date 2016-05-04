@@ -16,7 +16,7 @@ class PropertiesController < ApplicationController
     @properties = Property.find_by_id(params[:id])
   end
 
-  def showall
+  def show_all
     @properties = Property.all
   end
 
@@ -67,7 +67,7 @@ class PropertiesController < ApplicationController
   private
     def property_params
       params.require(:property).permit(:name, :user_id, :address, :city, :country, 
-      	:num_rooms, :ac_available, :pool_available, :num_points, :discount)
+      	:num_rooms, :ac_available, :pool_available, :num_points, :discount, :photo)
     end
 
 

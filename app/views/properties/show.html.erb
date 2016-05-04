@@ -16,6 +16,10 @@
 	</tr>
 
 	<tr>
+		<td><%= image_tag @property.photo.url %></td>
+	</tr>
+
+	<tr>
 		<th>Address</th>
 		<td><%= @property.address + ", " + @property.city + ", " + @property.country %></td>
 	</tr>
