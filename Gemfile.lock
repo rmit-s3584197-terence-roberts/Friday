@@ -153,6 +153,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autoprefixer-rails
   bcrypt-ruby
   bootstrap-datepicker-rails
   bootstrap-sass
