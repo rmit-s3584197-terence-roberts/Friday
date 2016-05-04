@@ -1,0 +1,12 @@
+<div class="property edit">
+  <h2>Edit your property</h2>
+
+  <%= form_for(:property, :url => {:action => 'update', :id => @property.id}) do |f| %>
+  
+  	<%= render(:partial => "form", :locals => {:f => f}) %>
+
+  	<div class="form-buttons">
+  		<%= submit_tag("Edit") %>
+  	</div>
+  <% end %>
+</div>

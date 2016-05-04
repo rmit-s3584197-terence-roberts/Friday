@@ -1,0 +1,36 @@
+<% if !flash[:notice].blank? %>
+	<div class="notice">
+    <%= flash[:notice] %>
+	</div>
+<% end %>
+
+
+
+<div class="friusers show">
+	<h2>Show Property</h2>
+<%= link_to("<< Go back", { :action => 'showall',}, :class => 'back-link') %>
+	<table summary="Friproperties detail view">
+	<tr>
+		<th>Name</th>
+		<td><%= @pro.proname %></td>
+	</tr>
+
+	<tr>
+		<th>Address</th>
+		<td><%= @pro.details_address + @pro.city+ @pro.country %></td>
+	</tr>
+	<tr>
+		<th>Need Points</th>
+		<td><%= @pro.needpoints %></td>
+	</tr>
+	<tr>
+		<th>Reviews</th>
+		<td><%= "To be continue" %></td>
+	</tr>
+
+	</table>
+	<br />
+	
+<br />
+	
+</div>

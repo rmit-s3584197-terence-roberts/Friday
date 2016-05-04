@@ -1,0 +1,14 @@
+<%= link_to("<< Go Back ", {:controller => 'user', :action => 'show'}, :class => 'back-link') %>
+
+<div class="user edit">
+  <h2>Edit your profile</h2>
+
+  <%= form_for(:user, :url => {:action => 'update', :id => @user.id}) do |f| %>
+  
+  	<%= render(:partial => "form", :locals => {:f => f}) %>
+
+  	<div class="form-buttons">
+  		<%= submit_tag("Edit") %>
+  	</div>
+  <% end %>
+</div>

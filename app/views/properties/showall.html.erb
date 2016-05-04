@@ -1,0 +1,32 @@
+<% if !flash[:notice].blank? %>
+	<div class="notice">
+    <%= flash[:notice] %>
+	</div>
+<% end %>
+<div class="friproperties index">
+	<h2>Browse All the Properties</h2>
+
+
+
+	<table class="listing" summary = "Friproperty list">
+		<tr class="header">
+			<th>Property Name</th>
+			<th>Owner Name</th>
+			<th>Country</th>
+			<th>City</th>
+		</tr>
+		<% @pros.each do |property| %>
+		<% user = Friuser.find_by_id(property.friuser_id) %>
+		<tr>
+			<td><%= property.proname %></td>
+			<td><%= "#{user.first_name} #{user.last_name}" %></td>
+			<td><%= property.country %></td>
+			<td><%= property.city %></td>
+			<td class="actions">
+				<%= link_to("Show", {:action => 'browseshow', :pro_id=>property.id}, :class => 'action show') %>
+				
+			</td>
+		</tr>
+		<% end %>
+	</table>
+</div>

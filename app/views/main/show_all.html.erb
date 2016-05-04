@@ -1,0 +1,24 @@
+<% if !flash[:notice].blank? %>
+	<div class="notice">
+    <%= flash[:notice] %>
+	</div>
+<% end %>
+<div class="properties index">
+	<h2>Browse All the Properties</h2>
+
+	<table class="listing" summary = "property list">
+		<tr class="header">
+			<th>City</th>
+			<th>Country</th>
+		</tr>
+		<% @properties.each do |property| %>
+		<tr>
+			<td><%= property.city %></td>
+			<td><%= property.country %></td>
+			<td class="actions">
+				<%= link_to("Show", {:action => 'show', :id => property.id}, :class => 'action show') %>	
+			</td>
+		</tr>
+		<% end %>
+	</table>
+</div>

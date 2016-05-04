@@ -1,0 +1,34 @@
+<% if !flash[:notice].blank? %>
+	<div class="notice">
+    <%= flash[:notice] %>
+	</div>
+<% end %>
+
+<div class="users show">
+	<h2>Show Property</h2>
+	<table summary="properties detail view">
+	<tr>
+		<th>Name</th>
+		<td><%= @property.name %></td>
+	</tr>
+	<tr>
+		<th>Address</th>
+		<td><%= @property.address + @property.city+ @property.country %></td>
+	</tr>
+	<tr>
+		<th>Points Required</th>
+		<td><%= @property.num_points %></td>
+	</tr>
+	<tr>
+		<th>Reviews</th>
+		<td><%= "..." %></td> 
+	</tr>
+
+	</table>
+	<br />
+	<% if session[:username] %>
+	<%= link_to("Edit", {:action => 'edit', :id => @property.id}) %>
+	<% end %>
+<br />
+	
+</div>
