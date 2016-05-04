@@ -4,21 +4,14 @@
 	</div>
 <% end %>
 
-
-
 <div class="user show">
 	<h2>Show Property</h2>
-<%= link_to("<< Go back", { :controller=>'user', :action => 'show',:id => session[:user_id] }, :class => 'back-link') %>
+    <%= link_to("<< Go back", { :controller=>'user', :action => 'show',:id => session[:user_id] }, :class => 'back-link') %>
 	<table summary="properties detail view">
-	<tr>
-		<th>Name</th>
-		<td><%= @property.name %></td>
-	</tr>
 
 	<tr>
 		<td><%= image_tag @property.photo.url %></td>
 	</tr>
-
 	<tr>
 		<th>Address</th>
 		<td><%= @property.address + ", " + @property.city + ", " + @property.country %></td>

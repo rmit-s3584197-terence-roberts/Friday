@@ -8,19 +8,20 @@
 
 	<table class="listing" summary = "property list">
 		<tr class="header">
-			<th>Property Name</th>
 			<th>Owner Name</th>
 			<th>Country</th>
 			<th>City</th>
 		</tr>
+
+
 		<% @properties.each do |property| %>
 		<% user = User.find_by_id(property.user_id) %>
-		<tr>
-			<td><%= property.name %></td>
+		  <tr>
+		  	<td><%= image_tag property.photo.url %></td>
 			<td><%= "#{user.first_name} #{user.last_name}" %></td>
 			<td><%= property.country %></td>
 			<td><%= property.city %></td>
-		</tr>
-		<% end %>
+		  </tr>
+	    <% end %>
 	</table>
 </div>
