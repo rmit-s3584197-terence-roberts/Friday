@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160504063536) do
+ActiveRecord::Schema.define(version: 20160504085436) do
 
   create_table "properties", force: :cascade do |t|
     t.string   "name",           limit: 50,  null: false
@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20160504063536) do
     t.string   "city",           limit: 255, null: false
     t.string   "country",        limit: 255, null: false
     t.integer  "num_rooms",      limit: 4,   null: false
-    t.boolean  "ac_available",               
-    t.boolean  "pool_available",             
+    t.boolean  "ac_available"
+    t.boolean  "pool_available"
     t.integer  "num_points",     limit: 4,   null: false
     t.float    "discount",       limit: 53,  null: false
     t.datetime "created_at"
