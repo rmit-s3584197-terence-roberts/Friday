@@ -1,48 +1,34 @@
-<div class="center jumbotron">
-  <h1>Welcome to Friday</h1>
-  <br />
-
-  <%= link_to "Sign up now!", {:controller => 'main', :action => 'signup'}, class: "btn btn-lg btn-primary" %>
-
-  <br />
-  <br />
+<div class="jumbotron">
+  <div class="container">
+    <h1>Friday</h1>
+  </div>
   <div class="search">
-        <div class="container">
-              <div class="form-section">
-                <div class="row">
 
-                    <form role="form">
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="sr-only" for="location">Location</label>
-                          <input type="text" class="form-control" id="location" placeholder="Where?">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="sr-only" for="checkin">Check in</label>
-                          <div class="input-group">
-                             <input type="text" data-provide='datepicker' placeholder="Check In">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="sr-only" for="checkin">Check Out</label>
-                          <div class="input-group">
-                             <input type="text" data-provide='datepicker' placeholder="Check Out">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <button type="submit" class="btn btn-default btn-primary">Search</button>
-                      </div>
-                    </form>
-
+      <div class="form-section">
+          <div class="container">
+        <div class="row">
+          <form role="form">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="sr-only" for="location">Location</label>
+                <input type="text" class="form-control" id="location" placeholder="Where will you be on Friday??">
+              </div>
             </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="sr-only" for="checkin">When</label>
+                <div class="input-group">
+                 <input type="text" data-provide='datepicker' placeholder="Which Friday?">
+                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+               </div>
+             </div>
+           </div>
+           <div class="col-md-2">
+            <button type="submit" class="btn btn-default btn-primary">Search</button>
           </div>
-        </div>
+        </form>
       </div>
+    
+    </div>
+  </div>
 </div>

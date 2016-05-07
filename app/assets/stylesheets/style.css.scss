@@ -1,3 +1,149 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Marck+Script);
+
+@font-face {
+  font-family: 'Shift';
+  font-style: normal;
+  font-weight: normal;
+  src: url("http://s3.amazonaws.com/codecademy-content/courses/ltp/fonts/shift.woff") format("woff");
+}
+@font-face {
+  font-family: 'Shift';
+  font-style: normal;
+  font-weight: bold;
+  src: url("http://s3.amazonaws.com/codecademy-content/courses/ltp/fonts/shift-bold.woff") format("woff");
+}
+
+.navbar-header {
+  padding-top: 10px;
+}
+
+.nav a {
+  color: #ff530d;
+  font-size: 14px;
+  font-style: normal;
+  padding: 14px 10px;
+  text-transform: uppercase;
+}
+
+.nav li {
+  display: inline;
+}
+
+.jumbotron {
+  background-image: url(image-path('london.png'));
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.jumbotron .container {
+ position: relative;
+ padding-left: 500px;
+ padding-right: 300px;
+ padding-top: 50px;
+ padding-bottom: 75px;
+ opacity: 1.0;
+ display: inline-block;
+
+}
+
+.jumbotron .container h1 {
+  color: #ff530d;
+  font-family: 'Marck Script', cursive;
+  font-size: 170px;  
+  font-weight: bold;
+}
+
+.jumbotron p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0c0c0c;
+  padding-top: 20px;
+  opacity: 0.5;
+}
+
+
+.learn-more {
+  background-color: #f7f7f7;
+}
+
+.learn-more h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.learn-more a {
+  color: #000000;
+}
+
+.neighborhood-guides {
+  background-color: #efefef;
+  border-bottom: 1px solid #dbdbdb  
+}
+
+.neighborhood-guides h2 {
+  color: #393c3d;
+  font-size: 24px;
+}
+
+.neighborhood-guides p {
+  font-size: 15px;
+  margin-bottom: 13px;
+}
+
+form {
+                width:800px;
+                margin:10px auto;
+}
+.search {
+                padding:5px 0px;
+                background:rgba(50, 50, 50, 0.2);
+                border:5px solid #dbdbdb;
+}
+.button {
+                position:relative;
+                padding:6px 15px;
+                left:-8px;
+                border:2px solid #207cca;
+                background-color:#207cca;
+                color:#fafafa;
+}
+.button:hover  {
+                background-color:#fafafa;
+                color:#207cca;
+}
+
+body {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.search {
+  margin-top: -7%;
+}
+.search .form-section{
+  background:rgba(0,0,0,0.6);
+  border: 2px solid #414141;
+  border-radius: 5px;
+  padding-top: 5px;
+}
+
+.message {
+  font-size: 16px;
+  margin: auto;
+    width: 60%;
+    
+    padding: 10px;
+}
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 50%;
+  margin-bottom: 15px;
+}
+input {
+  height: auto !important;
+}
+
