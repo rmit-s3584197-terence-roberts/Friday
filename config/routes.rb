@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
+
   root "main#index"
+
+  get '/login' => 'user_sessions#new'
+  post '/login' => 'user_sessions#create'
+  get '/logout' => 'user_sessions#destroy'
+
+  get '/signup' => 'user#new'
+  post '/users' => 'user#create'
 
   get '/properties/update' => 'properties#update'
   get '/properties/destroy' => 'properties#destroy'
@@ -11,18 +19,21 @@ Rails.application.routes.draw do
   get '/properties/index' => 'properties#index'
   get '/properties/new' => 'properties#new'
   get '/properties/show_all' => 'properties#show_all'
+
   get '/user/update' => 'user#update'  
   get '/user/show' => 'user#show'  
   get '/user/create' => 'user#create'  
   get '/user/index' => 'user#index'
   get '/user/edit' => 'user#edit'
-  get '/main/show_all' => 'main#show_all'
+
+  get '/main/browse' => 'main#browse'
+  get '/main/show' => 'main#show'
   get '/main/signup' => 'main#signup'
   get '/main/login' => 'main#login'
   get '/main/logout' => 'main#logout'
   get '/main/attempt_login' => 'main#attempt_login'
-
   post '/main/attempt_login' => 'main#attempt_login'
+
   post '/user/create' => 'user#create'
   post '/user/update' => 'user#update'
   post '/properties/create' => 'properties#create'

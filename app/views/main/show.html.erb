@@ -9,11 +9,11 @@
 	<table summary="properties detail view">
 	<tr>
 		<th>Name</th>
-		<td><%= @property.name %></td>
+		<td><%= @property.name.titleize %></td>
 	</tr>
 	<tr>
-		<th>Address</th>
-		<td><%= @property.address + @property.city+ @property.country %></td>
+		<th>Location</th>
+		<td><%= @property.city.titleize + ", " + @property.country.titleize %></td>
 	</tr>
 	<tr>
 		<th>Points Required</th>

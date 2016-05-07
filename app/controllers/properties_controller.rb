@@ -1,7 +1,7 @@
 class PropertiesController < ApplicationController
   
-  layout 'admin'
-  before_action :confirm_logged_in
+  layout 'application'
+  before_filter :authorize
 
   def index
     @properties = Property.all.where(user_id: params[:user_id])

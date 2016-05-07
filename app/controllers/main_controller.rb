@@ -1,11 +1,11 @@
 class MainController < ApplicationController
 
-  layout "public" 
+  layout 'application'
   
   def index
   end
 
-  def show_all
+  def browse
     @properties = Property.all
   end
 

@@ -26,18 +26,15 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav  navbar-right">
       <% if current_user %>
-
         <li><%= link_to('Browse', {:controller => 'properties', :action => 'show_all'}) %></li>
         <li><%= link_to('Account', {:controller => 'user', :action => 'show'}) %></li>
         <li><%= link_to('Log out', {:controller => 'main', :action => 'logout'}) %></li></li>
       <% else %>
-
-          <li><%= link_to('Browse', {:controller => 'main', :action => 'show_all'}) %></li>
+          <li><%= link_to('Browse', {:controller => 'main', :action => 'browse'}) %></li>
           <li><%= link_to "Sign up", {:controller => 'main', :action => 'signup'} %></li>
           <li><%= link_to('Log in', {:controller => 'main', :action => 'login'}) %></li>
           </ul>
       <% end %>
-
         </ul>
         </div>
     </nav>
@@ -45,16 +42,6 @@
 </header>
 <body>
 <br /><br />
-<% if !flash[:notice].blank? %>
-  <div class="notice">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
-<div class="container">
-    <%= yield %>
-    <%= render 'layouts/footer' %>
-</div>
-
 
   </body>
 </html>
