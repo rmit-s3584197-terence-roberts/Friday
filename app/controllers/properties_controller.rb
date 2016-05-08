@@ -26,7 +26,7 @@ class PropertiesController < ApplicationController
   end
 
   def create
-
+    
     @property = Property.new(property_params)
 
     if @property.save
@@ -66,7 +66,7 @@ class PropertiesController < ApplicationController
 
   private
     def property_params
-      params.require(:property).permit(:name, :user_id, :address, :city, :country, 
+      params.require(:property).permit(:name, :user_id, :address, :city, :country, :combined_city_country,
       	:num_rooms, :ac_available, :pool_available, :num_points, :discount, :photo)
     end
 

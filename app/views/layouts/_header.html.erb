@@ -6,34 +6,29 @@
   <p />
 
   <div class="search">
-
     <div class="form-section">
-
         <div class="row">
-          <form role="form">
+
+          <%= form_tag(:controller => "search", :action => "search") do %>
             <div class="col-md-6">
               <div class="form-group">
-
                 <%= text_field_tag :location, params[:location], :class => 'form-control', :placeholder => 
                 'Where will you be on Friday?', :id => 'geo-input' %>
-
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="form-group">
                 <div class="input-group">
-
                 <%= text_field_tag :date, params[:date], :class => 'form-control', "data-provide" => 'datepicker', 
                 :placeholder => 'Which Friday?' %>
-
                  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                </div>
              </div>
            </div>
-           <div class="col-md-2">
-           <%= submit_tag "Search", :class => "btn btn-default btn-primary" %>
+           <div class="col-md-3">
+           <%= submit_tag "Go!", :class => "btn btn-default btn-primary" %>
           </div>
-        </form>
+        <% end %>
+
       </div>
-    </div>
-  </div>
+

@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
 
   root "main#index"
-
-  get 'search/index'
+ 
+  post 'search' => 'search#search'
+  get '/search/index' => 'search#index'
 
   get '/login' => 'user_sessions#new'
   post '/login' => 'user_sessions#create'

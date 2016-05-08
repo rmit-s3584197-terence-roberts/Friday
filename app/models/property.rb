@@ -12,4 +12,6 @@ class Property < ActiveRecord::Base
 
 	after_validation :geocode, :if => :address_changed?
 
+	before_save { |property| property.combined_city_country = "#{property.city}" + ", " + "#{property.country}" }
+
 end
