@@ -4,10 +4,7 @@ class SearchController < ApplicationController
   	@search_location = params[:location]
     @search_date = params[:date]
     flash[:properties] = @search_location
-
   	@results = Property.where(['combined_city_country LIKE ?', flash[:properties]])
-
-
     redirect_to(:action => 'index')
   end
 
