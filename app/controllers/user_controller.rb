@@ -1,8 +1,6 @@
 class UserController < ApplicationController
 
   layout 'application'
-  
-  before_filter :authorize
 
   def index
     @properties = Property.all
