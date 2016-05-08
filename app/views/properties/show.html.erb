@@ -14,7 +14,7 @@
 	</tr>
 	<tr>
 		<th>Address</th>
-		<td><%= @property.address + ", " + @property.city + ", " + @property.country %></td>
+		<td><%= @property.address.titleize + ", " + @property.city.titleize + ", " + @property.country.titleize %></td>
 	</tr>
 	<tr>
 		<th>Points Required for Reservation</th>
@@ -22,7 +22,7 @@
 	</tr>
 	<tr>
 		<th>Reviews</th>
-		<td><%= "To be continue" %></td>
+		<td><%= "..." %></td>
 	</tr>
 
 	</table>
