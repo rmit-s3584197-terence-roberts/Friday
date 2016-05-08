@@ -15,4 +15,9 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
+//= require jquery.geocomplete
 //= require_tree .
+
+$(function() {
+$("#geo-input").geocomplete();
+});  

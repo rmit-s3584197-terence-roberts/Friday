@@ -13,13 +13,12 @@
           <form role="form">
             <div class="col-md-6">
               <div class="form-group">
-                <label class="sr-only" for="location">Location</label>
-                <input type="text" class="form-control" id="location" placeholder="Where will you be on Friday?">
+                <%= text_field_tag :search, params[:search], :class => 'form-control', :placeholder => 
+                'Where will you be on Friday?', :id => 'geo-input' %>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label class="sr-only" for="checkin">When</label>
                 <div class="input-group">
                  <input type="text" class="form-control" data-provide='datepicker' placeholder="Which Friday?">
                  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
