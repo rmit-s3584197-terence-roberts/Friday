@@ -8,12 +8,8 @@
 </head>
 <body>
 
+
 <%= render 'layouts/navbar' %>
-
-<%= yield %>
-
-<%= render 'layouts/footer' %>
-
 
 <% if !flash[:notice].blank? %>
   <div class="notice">
@@ -21,6 +17,9 @@
   </div>
 <% end %>
 
+<%= yield %>
+
+<%= render 'layouts/footer' %>
 
 </body>
 </html>

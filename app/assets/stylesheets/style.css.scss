@@ -95,7 +95,7 @@
 
 form {
                 width:800px;
-                margin:10px auto;
+                margin:5px auto;
 }
 .search {
                 padding:5px 0px;
@@ -127,14 +127,13 @@ body {
   background:rgba(0,0,0,0.6);
   border: 2px solid #414141;
   border-radius: 5px;
-  padding-top: 5px;
+  padding-top: 0px;
 }
 
 .message {
   font-size: 16px;
   margin: auto;
     width: 60%;
-    
     padding: 10px;
 }
 
@@ -146,4 +145,6 @@ input, textarea, select, .uneditable-input {
 input {
   height: auto !important;
 }
+
+
 

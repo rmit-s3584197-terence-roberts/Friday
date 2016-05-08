@@ -1,22 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Friday</title>
-    <meta name="description" content="Week long vacation rentals. Where will you be on Friday?">
-    
-    
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-
-</head>
 <header class="navbar navbar-fixed-top navbar-default">
   <div class="container-fluid">
-      <%= link_to  image_tag('logo.png', height: '40', width: '110'), 
-      url_for({:controller => 'main', :action => 'index'})  %>
     <nav>
-    <div class="navbar-header">
-      </div>
+          <%= link_to  image_tag('logo.png', height: '40', width: '110',  :style => "padding-top: 10px"), 
+      url_for({:controller => 'main', :action => 'index'})  %>
       <ul class="nav navbar-nav  navbar-right">
       <% if current_user %>
         <li><%= link_to('Browse', {:controller => 'properties', :action => 'show_all'}) %></li>
@@ -28,16 +14,13 @@
           <li><%= link_to('Log in', {:controller => 'main', :action => 'login'}) %></li>
           </ul>
       <% end %>
-        </ul>
+      </ul>
     </nav>
   </div>     
 </header>
+<p />
+<br />
 
-<body>
-<br /><br />
-
-  </body>
-</html>
 
 
    
