@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root "main#index"
 
+  get 'search/index'
+
   get '/login' => 'user_sessions#new'
   post '/login' => 'user_sessions#create'
   get '/logout' => 'user_sessions#destroy'

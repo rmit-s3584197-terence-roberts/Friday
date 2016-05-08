@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  
+
   layout 'application'
   before_filter :authorize
 

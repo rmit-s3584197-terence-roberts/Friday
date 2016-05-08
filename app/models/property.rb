@@ -12,9 +12,4 @@ class Property < ActiveRecord::Base
 
 	after_validation :geocode, :if => :address_changed?
 
-	def self.search search_term
-	  return scoped unless search_term.present? 
-	  where(['city LIKE ?', "%#{search_term}%"] AND ['country LIKE ?', "%#{search_term}%"]) 
-	end	
-
 end

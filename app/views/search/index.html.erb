@@ -1,0 +1,26 @@
+<% if !flash[:notice].blank? %>
+	<div class="notice">
+    <%= flash[:notice] %>
+	</div>
+<% end %>
+
+<br />
+<br />
+
+<div class="search index">
+	<h2>Here's what we found...</h2>
+
+	<div class="container-float">
+		<div class="row">
+			<% @properties.each do |property| %>
+			<% image = property.photo.url %>
+			<div class="col-lg-3 col-xs-4 col-lg-3 thumb">
+				<a class="thumbnail" href= <%= "/properties/show/?id=#{property.id}" %> >
+					<img class="img-responsive" src= <%= "#{image}" %> alt="">
+				</a>
+				<%= property.city.titleize + ", " + property.country.titleize %>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>

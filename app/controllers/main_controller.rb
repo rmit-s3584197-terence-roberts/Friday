@@ -1,8 +1,9 @@
 class MainController < ApplicationController
 
   layout 'application'
+
   
-  def index
+  def index 
   end
 
   def browse
