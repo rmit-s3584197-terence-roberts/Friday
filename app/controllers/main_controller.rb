@@ -19,15 +19,7 @@ class MainController < ApplicationController
   end
 
   def create
-    @user= User.new(user_params)
-    if @user.save
-      flash[:notice] = "Welcome to Friday. You're now part of our community!"
-      session[:user_id] = @user.id
-      session[:username] = @user.username
-      redirect_to(:controller => 'user', :action => 'show', :id => @user.id)
-    else
-      render('signup')
-    end
+
   end
 
   def login
@@ -44,7 +36,7 @@ class MainController < ApplicationController
     if authorized_user
       session[:user_id] = authorized_user.id
       session[:username] = authorized_user.username
-      flash[:notice] = "You are now logged in. Welcome back to Friday."
+      flash[:notice] = "You are now logged in. Welcome back to Friday, #{authorized_user.first_name}!"
       redirect_to(:controller => 'user', :action => 'show')
     else
       flash[:notice] = "Invalid username/password combination."

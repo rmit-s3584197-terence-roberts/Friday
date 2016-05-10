@@ -1,13 +1,6 @@
-<% if !flash[:notice].blank? %>
-	<div class="notice">
-    <%= flash[:notice] %>
-	</div>
-<% end %>
 
 <div class="properties index">
 	<h2>Properties</h2>
-
-	<%= link_to("Go back", {:controller=>'user', :action => 'show',:id => @owner_id}) %>
 
 	<table class="listing" summary = "property list">
 		<tr class="header">

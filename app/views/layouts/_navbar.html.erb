@@ -18,9 +18,25 @@
     </nav>
   </div>     
 </header>
-<p />
 <br />
 
+<% if notice || alert %>
+<div class="flash-message <%= notice ? "notice" : ""%><%= alert ? "error" : ""%>">
+  <div class="container col-lg-12 clearfix">
+    <div class="col-lg-12">
+      <% if notice %>
+      <p><%= notice %></p>
+      <% elsif alert %>
+      <p><%= alert %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<p />
+<p />
+<p />
 
 
    
