@@ -3,18 +3,18 @@ class ReservationController < ApplicationController
   layout 'application'
 
   before_filter :authorize
-
+  @@property = 0
   def new
-  	@property = Property.find_by_id(params[:id])
+  	@@property = Property.find_by_id(params[:id])
     @guest = User.find_by_id(session[:user_id])
   end
 
   def create
     @reservation = Reservation.new(reservation_params)
-
+    @property = @@property
     if @reservation.save
       flash[:notice] = "Your request has been submitted."
-      @host = User.find_by_id(params[:property_user_id])
+      @host = User.find_by_id(params[@property.user_id])
       ReservationMailer.reservation_request_email(@host)
       redirect_to :controller => 'properties', :action => 'show', :id => @property.id
     else
