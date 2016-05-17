@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
     has_secure_password
 
 	has_many :properties
-	has_many :reservations, through: :properties
+	has_many :reservations
 
 	validates :username, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
   	validates :email, presence: true, uniqueness: { case_sensitive: false }

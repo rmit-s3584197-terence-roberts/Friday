@@ -6,6 +6,15 @@ class UserController < ApplicationController
     @properties = Property.all
   end
 
+  def show
+    @user = User.find_by_id(params[:id] || session[:user_id])
+  end
+
+  def reservations
+    @reservations = Reservation.all.where(user_id: session[:user_id])
+    @user = User.find_by_id(params[:id] || session[:user_id])
+  end
+
   def new
     @user = User.new
   end
@@ -18,10 +27,6 @@ class UserController < ApplicationController
     else
       render("new")
     end
-  end
-
-  def show
-    @user = User.find_by_id(params[:id] || session[:user_id])
   end
 
   def edit
@@ -50,9 +55,8 @@ class UserController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit( :username, :password, :password_confirmation, 
+      params.require(:user).permit( :username, :password, :password_confirmation,
         :first_name, :last_name, :email, :address, :city, :country, :phone)
     end
 
 end
-

@@ -17,6 +17,9 @@ class ReservationController < ApplicationController
       @host = User.find_by_id(params[:property_user_id])
       ReservationMailer.reservation_request_email(@host)
       redirect_to :controller => 'properties', :action => 'show', :id => @property.id
+    else
+      flash[:notice] = "There was a problem submitting your request."
+      redirect_to :controller => 'properties', :action => 'show', :id => @property.id
     end
   end
 
