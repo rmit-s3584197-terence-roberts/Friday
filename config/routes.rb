@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   root "main#index"
- 
+
   post 'search' => 'search#search'
   get '/search/index' => 'search#index'
 
@@ -23,9 +23,9 @@ Rails.application.routes.draw do
   get '/properties/new' => 'properties#new'
   get '/properties/show_all' => 'properties#show_all'
 
-  get '/user/update' => 'user#update'  
-  get '/user/show' => 'user#show'  
-  get '/user/create' => 'user#create'  
+  get '/user/update' => 'user#update'
+  get '/user/show' => 'user#show'
+  get '/user/create' => 'user#create'
   get '/user/index' => 'user#index'
   get '/user/edit' => 'user#edit'
 
@@ -43,6 +43,8 @@ Rails.application.routes.draw do
   post '/properties/destroy' => 'properties#destroy'
   post '/properties/update' => 'properties#update'
 
+  get '/reservation/new' => 'reservation#new'
+  post '/reservation/create' => 'reservation#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

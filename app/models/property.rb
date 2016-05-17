@@ -1,10 +1,12 @@
 class Property < ActiveRecord::Base
 
 	belongs_to :user
+	has_many :reservations
+	has_many :users, through: :reservations
 
 	geocoded_by :address
 
-	validates_presence_of :name, :user_id, :address, :city, :country, 
+	validates_presence_of :name, :user_id, :address, :city, :country,
 	  :num_rooms, :num_points, :photo
 
 	has_attached_file :photo

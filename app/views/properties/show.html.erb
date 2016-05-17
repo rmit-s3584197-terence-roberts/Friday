@@ -1,5 +1,3 @@
-
-
 <div class="user show">
 	<h2>Show Property</h2>
 	<table summary="properties detail view">
@@ -19,12 +17,15 @@
 		<th>Reviews</th>
 		<td><%= "..." %></td>
 	</tr>
-
+	<tr>
+		<th>Book this property</th>
+		<%= link_to("Book now!", {:controller => 'reservation', :action => 'new', :id => @property.id}) %>
+	</tr>
 	</table>
 	<br />
 	<% if session[:username] %>
 	<%= link_to("Edit", {:action => 'edit', :id => @property.id}) %>
 	<% end %>
 <br />
-	
+
 </div>
