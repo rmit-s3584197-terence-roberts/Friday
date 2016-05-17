@@ -14,7 +14,7 @@ class ReservationController < ApplicationController
 
     if @reservation.save
       flash[:notice] = "Your request has been submitted."
-      @host = User.find_by_id(params[:property_user_id])
+      @host = User.find_by_id(params[@@property.user_id])
       ReservationMailer.reservation_request_email(@host)
       redirect_to :controller => 'properties', :action => 'show', :id => @@property.id
     else
