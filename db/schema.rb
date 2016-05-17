@@ -26,28 +26,28 @@ ActiveRecord::Schema.define(version: 20160516132230) do
     t.float    "discount",              limit: 53,  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
+    t.string   "photo_file_name",       limit: 255
+    t.string   "photo_content_type",    limit: 255
+    t.integer  "photo_file_size",       limit: 4
     t.datetime "photo_updated_at"
-    t.string   "combined_city_country"
-    t.float    "longitude"
-    t.float    "latitude"
+    t.string   "combined_city_country", limit: 255
+    t.float    "longitude",             limit: 24
+    t.float    "latitude",              limit: 24
   end
 
-  add_index "properties", ["user_id"], name: "index_properties_on_user_id"
+  add_index "properties", ["user_id"], name: "index_properties_on_user_id", using: :btree
 
   create_table "reservations", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.date     "start_date"
-    t.integer  "property_id"
-    t.integer  "status"
-    t.integer  "user_id"
+    t.integer  "property_id", limit: 4
+    t.integer  "status",      limit: 4
+    t.integer  "user_id",     limit: 4
   end
 
-  add_index "reservations", ["property_id"], name: "index_reservations_on_property_id"
-  add_index "reservations", ["user_id"], name: "index_reservations_on_user_id"
+  add_index "reservations", ["property_id"], name: "index_reservations_on_property_id", using: :btree
+  add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
 
   create_table "user_sessions", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -68,7 +68,9 @@ ActiveRecord::Schema.define(version: 20160516132230) do
     t.boolean  "booking_status",              default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password_digest"
+    t.string   "password_digest", limit: 255
   end
 
+  add_foreign_key "reservations", "properties"
+  add_foreign_key "reservations", "users"
 end
