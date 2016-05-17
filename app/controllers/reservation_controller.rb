@@ -11,15 +11,15 @@ class ReservationController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
-
+    @property = @@property
     if @reservation.save
       flash[:notice] = "Your request has been submitted."
-      @host = User.find_by_id(params[@@property.user_id])
+      @host = User.find_by_id(params[@property.user_id])
       ReservationMailer.reservation_request_email(@host)
-      redirect_to :controller => 'properties', :action => 'show', :id => @@property.id
+      redirect_to :controller => 'properties', :action => 'show', :id => @property.id
     else
       flash[:notice] = "There was a problem submitting your request."
-      redirect_to :controller => 'properties', :action => 'show', :id => @@property.id
+      redirect_to :controller => 'properties', :action => 'show', :id => @property.id
     end
   end
 
