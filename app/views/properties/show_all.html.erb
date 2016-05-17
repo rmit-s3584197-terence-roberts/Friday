@@ -1,9 +1,9 @@
 
-<%= render(:partial => '/layouts/header') %> 
+<%= render(:partial => '/layouts/header') %>
 
 </div>
 </div>
-	
+
 <div class="properties index">
 <h2>Where will you be on Friday?</h2>
 
@@ -16,8 +16,8 @@
 		      <a class="thumbnail" href= <%= "/properties/show/?id=#{property.id}" %> >
 		        <img class="img-responsive" src= <%= "#{image}" %> alt="">
 		      </a>
-		  Stay with <%= link_to("#{user.first_name.camelize}", 
-			{:controller => 'user', :action => 'show', :id => user}) %> 
+		  Stay with <%= link_to("#{user.first_name.camelize}",
+			{:controller => 'user', :action => 'show', :id => user}) %>
 			in <%= property.city.camelize %>
 		</div>
 	<% end %>
@@ -25,4 +25,3 @@
 </div>
 
 </div>
-
