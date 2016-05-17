@@ -7,7 +7,7 @@
   <%= form_for(:reservation, :url => {:action => 'create'}) do |f| %>
     <%= render(:partial => "form", :locals => {:f => f}) %>
     <br/>
-    <%= f.submit "book", class: "btn btn-primary"%>
+    <%= f.submit "Send reservation request", class: "btn btn-primary"%>
     <% end %>
   </div>
 </div>

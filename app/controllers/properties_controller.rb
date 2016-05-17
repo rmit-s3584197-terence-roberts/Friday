@@ -26,13 +26,14 @@ class PropertiesController < ApplicationController
   end
 
   def create
-    
+
     @property = Property.new(property_params)
 
     if @property.save
       flash[:notice] = "Property created successfully"
       redirect_to :action => 'show', :id => @property.id
     else
+      flash[:notice] = "Property was not created"
       render('new')
     end
   end

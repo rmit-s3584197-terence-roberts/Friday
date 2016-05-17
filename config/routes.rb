@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get '/user/create' => 'user#create'
   get '/user/index' => 'user#index'
   get '/user/edit' => 'user#edit'
+  get '/user/reservations' => 'user#reservations'
 
   get '/main/browse' => 'main#browse'
   get '/main/show' => 'main#show'
