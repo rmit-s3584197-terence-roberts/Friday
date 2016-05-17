@@ -2,7 +2,8 @@
   <h2> Your reservations </h2>
 
   <%= @reservations.each do |reservation| %>
-    <%= if @reservation.status: :pending %>
+    <%= property = Property.find_by_id(reservation.user_id) %>
+    <%= property.address %>
   <% end %>
 
 
