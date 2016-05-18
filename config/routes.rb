@@ -47,6 +47,10 @@ Rails.application.routes.draw do
   post '/reservation/create' => 'reservation#create'
   get '/reservation/index' => 'reservation#index'
   post '/reservation/delete' => 'reservation#delete'
+  get '/reservation/accept' => 'reservation#accept'
+  get '/reservation/reject' => 'reservation#reject'
+  post '/reservation/accept' => 'reservation#accept'
+  post '/reservation/reject' => 'reservation#reject'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -6,7 +6,9 @@ class ReservationController < ApplicationController
 
   def index
     @user = User.find_by_id(params[:user_id])
+    @properties = Property.all.where(user_id: params[:user_id])
     @reservationsAsGuest = Reservation.all.where(user_id: params[:user_id])
+
   end
 
   def new
@@ -31,7 +33,9 @@ class ReservationController < ApplicationController
   end
 
   def accept
-
+    @host = User.find_by_id(params[:host_id])
+    @guest = User.find_by_id(params[:guest_id])
+    redirect_to :controller => 'reservation', :action => 'index', :id => session[:user_id]
   	# User property.user_id gets alert of new request from user.id
   	# User property.user_id reviews request at Reservation.show()
   	# User property.user_id accepts request
@@ -41,7 +45,7 @@ class ReservationController < ApplicationController
   end
 
   def reject
-
+    redirect_to :controller => 'reservation', :action => 'index', :id => :id
    	# User property.user_id gets alert of new request from user.id
   	# User property.user_id reviews request at Reservation.show()
   	# User property.user_id rejects request
