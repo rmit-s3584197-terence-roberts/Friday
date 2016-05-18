@@ -28,7 +28,6 @@ Rails.application.routes.draw do
   get '/user/create' => 'user#create'
   get '/user/index' => 'user#index'
   get '/user/edit' => 'user#edit'
-  get '/user/reservations' => 'user#reservations'
 
   get '/main/browse' => 'main#browse'
   get '/main/show' => 'main#show'
@@ -46,6 +45,8 @@ Rails.application.routes.draw do
 
   get '/reservation/new' => 'reservation#new'
   post '/reservation/create' => 'reservation#create'
+  get '/reservation/index' => 'reservation#index'
+  post '/reservation/delete' => 'reservation#delete'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

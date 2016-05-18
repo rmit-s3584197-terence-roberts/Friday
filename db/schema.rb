@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516132230) do
+ActiveRecord::Schema.define(version: 20160518050850) do
 
   create_table "properties", force: :cascade do |t|
     t.string   "name",                  limit: 50,  null: false
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20160516132230) do
     t.datetime "updated_at",  null: false
     t.date     "start_date"
     t.integer  "property_id"
-    t.integer  "status"
     t.integer  "user_id"
+    t.string   "status"
   end
 
   add_index "reservations", ["property_id"], name: "index_reservations_on_property_id"

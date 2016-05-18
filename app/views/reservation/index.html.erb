@@ -1,0 +1,26 @@
+<div class="user reservations">
+  <h2> Your reservations </h2>
+
+	<table class="listing" summary = "reservations list">
+		<tr class="header">
+			<th>Property Name</th>
+			<th>Country</th>
+			<th>City</th>
+      <th>Start Date</th>
+      <th>Status</th>
+		</tr>
+		<% @reservationsAsGuest.each do |reservation| %>
+		<% property = Property.find_by_id(reservation.property_id) %>
+		<tr>
+			<td><%= property.name %></td>
+			<td><%= property.country %></td>
+			<td><%= property.city %></td>
+      <td><%= reservation.start_date %></td>
+      <td><%= reservation.status %></td>
+			<td class="actions">
+				<%= link_to("Cancel", {:action => 'delete', :id => reservation.id}, :class => 'action delete') %>
+			</td>
+		</tr>
+		<% end %>
+	</table>
+</div>
