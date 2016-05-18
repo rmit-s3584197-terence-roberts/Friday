@@ -44,5 +44,5 @@
 	<br />
 	<%= link_to("Show all Properties you have", {:controller => 'properties', :action => 'index', :user_id => @user.id}) %>
 	<br />
-	<%= link_to("Reservation Requests", {:controller => 'user', :action => 'reservations', :user_id => @user.id}) %>
+	<%= link_to("Reservations", {:controller => 'reservation', :action => 'index', :user_id => @user.id}) %>
 </div>

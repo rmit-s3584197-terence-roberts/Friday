@@ -10,11 +10,6 @@ class UserController < ApplicationController
     @user = User.find_by_id(params[:id] || session[:user_id])
   end
 
-  def reservations
-    @reservations = Reservation.all.where(user_id: session[:user_id])
-    @user = User.find_by_id(params[:id] || session[:user_id])
-  end
-
   def new
     @user = User.new
   end
@@ -23,7 +18,7 @@ class UserController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notice] = 'Welcome to Friday. You are now a member of our community!'
-      redirect_to(:controller => 'user', :action => 'index')
+      redirect_to(:controller => 'main', :action => 'index')
     else
       render("new")
     end

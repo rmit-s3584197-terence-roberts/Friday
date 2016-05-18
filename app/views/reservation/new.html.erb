@@ -8,7 +8,7 @@
 
     <%= f.date_field :start_date %>
     <%= f.hidden_field :property_id, :value => @property.id %>
-    <%= f.hidden_field :status, :value => 0%>
+    <%= f.hidden_field :status, :value => "pending" %>
     <%= f.hidden_field :user_id, :value => @guest.id %>
     <br/>
 
