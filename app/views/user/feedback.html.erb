@@ -1,0 +1,26 @@
+<div class="user feedback">
+  <h2>Leave feedback</h2>
+
+  <%= form_for(:user, :url => {:action => 'enterfeedback', :reservation_id => @reservation.id, :user_id => @reservation.user_id}) do |f| %>
+  <table summary="feedback form fields">
+    <tr>
+      <th>Rating</th>
+      <td>
+          <%= f.radio_button(:rating, 1.0) %>
+          <%= f.label(:rating, "1") %>
+          <%= f.radio_button(:rating, 2.0) %>
+          <%= f.label(:rating, "2") %>
+          <%= f.radio_button(:rating, 3.0) %>
+          <%= f.label(:rating, "3") %>
+          <%= f.radio_button(:rating, 4.0) %>
+          <%= f.label(:rating, "4") %>
+          <%= f.radio_button(:rating, 5.0) %>
+          <%= f.label(:rating, "5") %>
+        </td>
+      </tr>
+  </table>
+  	<div class="form-buttons">
+  		<%= submit_tag("Submit") %>
+  	</div>
+  <% end %>
+</div>

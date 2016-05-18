@@ -20,6 +20,12 @@ class PropertiesController < ApplicationController
     @properties = Property.all
   end
 
+  def feedback
+    @reservation = Reservation.find_by_id(params[:reservation_id])
+    @property = Property.find_by_id(params[:property_id])
+
+  end
+
   def new
     @user = User.find_by_id(params[:id])
     @properties = Property.new
@@ -68,7 +74,7 @@ class PropertiesController < ApplicationController
   private
     def property_params
       params.require(:property).permit(:name, :user_id, :address, :city, :country, :combined_city_country,
-      	:num_rooms, :ac_available, :pool_available, :num_points, :discount, :photo)
+      	:num_rooms, :ac_available, :pool_available, :num_points, :photo)
     end
 
 

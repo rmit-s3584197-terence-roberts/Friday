@@ -22,12 +22,15 @@ Rails.application.routes.draw do
   get '/properties/index' => 'properties#index'
   get '/properties/new' => 'properties#new'
   get '/properties/show_all' => 'properties#show_all'
+  get 'properties/feedback' => 'properties#feedback'
 
   get '/user/update' => 'user#update'
   get '/user/show' => 'user#show'
   get '/user/create' => 'user#create'
   get '/user/index' => 'user#index'
   get '/user/edit' => 'user#edit'
+  get '/user/feedback' => 'user#feedback'
+  post '/user/enterfeedback' => 'user#enterfeedback'
 
   get '/main/browse' => 'main#browse'
   get '/main/show' => 'main#show'

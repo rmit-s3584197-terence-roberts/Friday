@@ -18,8 +18,10 @@
       <td><%= reservation.start_date %></td>
       <td><%= reservation.status %></td>
 			<td class="actions">
-				<%= link_to("Cancel", {:action => 'delete', :id => reservation.id}, :class => 'action delete') %>
-			</td>
+        <% if (reservation.status == "accepted") %>
+          <%= link_to("Leave feedback", {:controller => 'properties', :action => 'feedback', :reservation_id => reservation.id, :property_id => property.id}) %>
+        <% end %>
+      </td>
 		</tr>
 		<% end %>
 	</table>
@@ -46,8 +48,11 @@
       <% if (reservation.status == "pending") %>
         <%= link_to("Accept", {:action => 'accept', :property_id => reservation.property_id, :reservation_id => reservation.id, :host_id => property.user_id, :guest_id => reservation.user_id}) %>
         <%= link_to("Reject", {:action => 'reject', :property_id => reservation.property_id, :reservation_id => reservation.id, :host_id => property.user_id, :guest_id => reservation.user_id}) %>
-        <% end %>
-			</td>
+      <% end %>
+      <% if (reservation.status == "accepted") %>
+        <%= link_to("Leave feedback", {:controller => 'user', :action => 'feedback', :reservation_id => reservation.id, :guest_id => reservation.user_id}) %>
+      <% end %>
+      </td>
 		</tr>
     <% end %>
     <% end %>

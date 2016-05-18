@@ -9,8 +9,7 @@
   	  <td><%= f.text_field(:name) %></td>
   	</tr>
   	<tr>
-  	  <th>Owner ID</th>
-  	  <td><%= f.text_field(:user_id, :value => session[:user_id], :readonly => true) %></td>
+  	  <td><%= f.hidden_field(:user_id, :value => session[:user_id], :readonly => true) %></td>
   	</tr>
     <tr>
       <th>Address</th>
@@ -47,10 +46,6 @@
   	<tr>
   	  <th>Points required for reservation</th>
   	  <td><%= f.number_field(:num_points, in: 1..10000) %></td>
-  	</tr>
-  	<tr>
-  	  <th>Discount for above three weeks</th>
-  	  <td><%= f.number_field(:discount, in: 1..99, :step => "any")%> %</td>
   	</tr>
     <tr>
       <th>Photo</th>

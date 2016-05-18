@@ -10,6 +10,20 @@ class UserController < ApplicationController
     @user = User.find_by_id(params[:id] || session[:user_id])
   end
 
+  def feedback
+    @reservation = Reservation.find_by_id(params[:reservation_id])
+  end
+
+  def enterfeedback
+    @user = User.find_by_id(params[:user_id])
+    @reservation = Reservation.find_by_id(params[:reservation_id])
+    @reservation.update_attribute(:guest_rating, :rateing)
+    @user.update_attribute(:rating, :rating)
+    flash[:notice] = "Feedback left successfully"
+    @allReservations = Reservation.all.where(user_id: params[:user_id])
+    redirect_to(:controller => 'reservation', :action => 'index', :user_id => @user.id)
+  end
+
   def new
     @user = User.new
   end
@@ -33,8 +47,6 @@ class UserController < ApplicationController
     if @user.update_attributes(user_params)
       flash[:notice] = "User updated successfully"
       redirect_to(:action => 'show', :id => @user.id)
-    else
-      render('edit')
     end
   end
 
