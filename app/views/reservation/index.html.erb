@@ -44,8 +44,8 @@
       <td><%= reservation.status %></td>
 			<td class="actions">
       <% if (reservation.status == "pending") %>
-        <%= link_to("Accept", {:action => 'accept', :host_id => property.user_id, :guest_id => reservation.user_id}) %>
-        <%= link_to("Reject", {:action => 'reject', :host_id => property.user_id, :guest_id => reservation.user_id}) %>
+        <%= link_to("Accept", {:action => 'accept', :property_id => reservation.property_id, :reservation_id => reservation.id, :host_id => property.user_id, :guest_id => reservation.user_id}) %>
+        <%= link_to("Reject", {:action => 'reject', :property_id => reservation.property_id, :reservation_id => reservation.id, :host_id => property.user_id, :guest_id => reservation.user_id}) %>
         <% end %>
 			</td>
 		</tr>

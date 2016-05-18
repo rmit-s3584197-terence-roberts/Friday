@@ -35,7 +35,20 @@ class ReservationController < ApplicationController
   def accept
     @host = User.find_by_id(params[:host_id])
     @guest = User.find_by_id(params[:guest_id])
-    redirect_to :controller => 'reservation', :action => 'index', :id => session[:user_id]
+    @property = Property.find_by_id(params[:property_id])
+    @reservation = Reservation.find_by_id(params[:reservation_id])
+    @reservation.status = "confirmed"
+    if @reservation.save
+      flash[:notice] = "Reservation has been confirmed."
+      @host.points = 1000
+      @guest.points = 1000
+      @host.save
+      @guest.save
+      #ReservationMailer.response_accept_email(@guest)
+    else
+      flash[:notice] = "There was a problem accepting the reservation."
+    end
+    redirect_to :controller => 'reservation', :action => 'index', :user_id => session[:user_id]
   	# User property.user_id gets alert of new request from user.id
   	# User property.user_id reviews request at Reservation.show()
   	# User property.user_id accepts request
