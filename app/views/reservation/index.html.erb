@@ -23,4 +23,33 @@
 		</tr>
 		<% end %>
 	</table>
+
+
+  <table class="listing" summary = "reservations list">
+		<tr class="header">
+			<th>Property Name</th>
+			<th>Country</th>
+			<th>City</th>
+      <th>Start Date</th>
+      <th>Status</th>
+		</tr>
+		<% @properties.each do |property| %>
+		<% reservations = Reservation.all.where(property.id) %>
+    <% reservations.each do |reservation| %>
+		<tr>
+			<td><%= property.name %></td>
+			<td><%= property.country %></td>
+			<td><%= property.city %></td>
+      <td><%= reservation.start_date %></td>
+      <td><%= reservation.status %></td>
+			<td class="actions">
+      <% if (reservation.status == "pending") %>
+        <%= link_to("Accept", {:action => 'accept', :host_id => property.user_id, :guest_id => reservation.user_id}) %>
+        <%= link_to("Reject", {:action => 'reject', :host_id => property.user_id, :guest_id => reservation.user_id}) %>
+        <% end %>
+			</td>
+		</tr>
+    <% end %>
+    <% end %>
+	</table>
 </div>
