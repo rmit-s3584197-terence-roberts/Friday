@@ -18,7 +18,7 @@ gem 'rails_bootstrap_navbar'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bcrypt-ruby'
-gem 'paperclip'
+gem 'paperclip', '~> 4.2'
 gem 'geocoder'
 gem 'tzinfo-data'
 
