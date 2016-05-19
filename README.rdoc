@@ -23,6 +23,3 @@ Running your own copy of Friday is super easy.
 5. Use 'rake db:reset' and 'rake db:migrate' to ensure all models are up to date.
 5. Run the server
 6. Load up localhost:3000, and you should be good to go.
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
