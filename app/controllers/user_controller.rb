@@ -11,16 +11,19 @@ class UserController < ApplicationController
   end
 
   def feedback
+    @user = User.find_by_id(params[:guest_id])
     @reservation = Reservation.find_by_id(params[:reservation_id])
   end
 
   def enterfeedback
     @user = User.find_by_id(params[:user_id])
     @reservation = Reservation.find_by_id(params[:reservation_id])
-    @reservation.update_attribute(:guest_rating, :rateing)
-    @user.update_attribute(:rating, :rating)
+
+    @reservation.update_attribute(:guest_rating, :guest_rating)
+    @user.update_attribute(:rating, @reservation.guest_rating)
+
     flash[:notice] = "Feedback left successfully"
-    @allReservations = Reservation.all.where(user_id: params[:user_id])
+    #@allReservations = Reservation.all.where(user_id: params[:user_id])
     redirect_to(:controller => 'reservation', :action => 'index', :user_id => @user.id)
   end
 
@@ -63,7 +66,7 @@ class UserController < ApplicationController
   private
     def user_params
       params.require(:user).permit( :username, :password, :password_confirmation,
-        :first_name, :last_name, :email, :address, :city, :country, :phone)
+        :first_name, :last_name, :email, :address, :city, :country, :phone, :rating)
     end
 
 end
