@@ -6,13 +6,12 @@ class CreateProperties < ActiveRecord::Migration
     t.string  "address",      	limit: 255, null: false
     t.string  "city",         	limit: 255, null: false
     t.string  "country",      	limit: 255, null: false
-    t.string  "availability", 	limit: 255, null: false
     t.integer "num_rooms",    	limit: 4,   null: false
-    t.boolean "ac_available",   null: false
-    t.boolean "pool_available", null: false
+    t.boolean "ac_available"
+    t.boolean "pool_available"
     t.integer "num_points",     limit: 4,   null: false
-    t.float   "discount",       limit: 53,  null: false
-    t.timestamps 
+    t.decimal "rating"
+    t.timestamps
     end
     add_index "properties", "user_id"
   end

@@ -37,33 +37,32 @@ class ReservationController < ApplicationController
     @guest = User.find_by_id(params[:guest_id])
     @property = Property.find_by_id(params[:property_id])
     @reservation = Reservation.find_by_id(params[:reservation_id])
-    @reservation.status = "confirmed"
     if @reservation.save
       flash[:notice] = "Reservation has been confirmed."
-      @host.points = 1000
-      @guest.points = 1000
-      @host.save
-      @guest.save
+      @reservation.update_attribute(:status, "accepted")
+      @host.update_attribute(:points, @host.points + @property.num_points)
+      @guest.update_attribute(:points, @guest.points - @property.num_points)
       #ReservationMailer.response_accept_email(@guest)
     else
       flash[:notice] = "There was a problem accepting the reservation."
     end
     redirect_to :controller => 'reservation', :action => 'index', :user_id => session[:user_id]
-  	# User property.user_id gets alert of new request from user.id
-  	# User property.user_id reviews request at Reservation.show()
-  	# User property.user_id accepts request
-  	# User property.user_id receives Property.num_points
-  	# User user.id is deducted Property.num_points
 
   end
 
   def reject
-    redirect_to :controller => 'reservation', :action => 'index', :id => :id
-   	# User property.user_id gets alert of new request from user.id
-  	# User property.user_id reviews request at Reservation.show()
-  	# User property.user_id rejects request
-   	# Property.id is marked available for date specified
-
+    @host = User.find_by_id(params[:host_id])
+    @guest = User.find_by_id(params[:guest_id])
+    @property = Property.find_by_id(params[:property_id])
+    @reservation = Reservation.find_by_id(params[:reservation_id])
+    @reservation.status = "rejected"
+    if @reservation.save
+      flash[:notice] = "Reservation has been rejected."
+      #ReservationMailer.response_accept_email(@guest)
+    else
+      flash[:notice] = "There was a problem rejecting the reservation."
+    end
+    redirect_to :controller => 'reservation', :action => 'index', :user_id => session[:user_id]
   end
 
 
@@ -74,6 +73,7 @@ class ReservationController < ApplicationController
   end
 
   def delete
+
   end
 
   def destroy
