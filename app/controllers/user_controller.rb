@@ -10,23 +10,6 @@ class UserController < ApplicationController
     @user = User.find_by_id(params[:id] || session[:user_id])
   end
 
-  def feedback
-    @user = User.find_by_id(params[:guest_id])
-    @reservation = Reservation.find_by_id(params[:reservation_id])
-  end
-
-  def enterfeedback
-    @user = User.find_by_id(params[:user_id])
-    @reservation = Reservation.find_by_id(params[:reservation_id])
-
-    @reservation.update_attribute(:guest_rating, :guest_rating)
-    @user.update_attribute(:rating, @reservation.guest_rating)
-
-    flash[:notice] = "Feedback left successfully"
-    #@allReservations = Reservation.all.where(user_id: params[:user_id])
-    redirect_to(:controller => 'reservation', :action => 'index', :user_id => @user.id)
-  end
-
   def new
     @user = User.new
   end

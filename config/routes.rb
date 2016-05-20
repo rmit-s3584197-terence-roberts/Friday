@@ -22,15 +22,12 @@ Rails.application.routes.draw do
   get '/properties/index' => 'properties#index'
   get '/properties/new' => 'properties#new'
   get '/properties/show_all' => 'properties#show_all'
-  get 'properties/feedback' => 'properties#feedback'
 
   get '/user/update' => 'user#update'
   get '/user/show' => 'user#show'
   get '/user/create' => 'user#create'
   get '/user/index' => 'user#index'
   get '/user/edit' => 'user#edit'
-  get '/user/feedback' => 'user#feedback'
-  post '/user/enterfeedback' => 'user#enterfeedback'
 
   get '/main/browse' => 'main#browse'
   get '/main/show' => 'main#show'
@@ -54,6 +51,10 @@ Rails.application.routes.draw do
   get '/reservation/reject' => 'reservation#reject'
   post '/reservation/accept' => 'reservation#accept'
   post '/reservation/reject' => 'reservation#reject'
+  get '/reservation/userRating' => 'reservation#userRating'
+  post '/reservation/enterRating' => 'reservation#enterRating'
+  get '/reservation/propertyFeedback' => 'reservation#propertyFeedback'
+  post '/reservation/enterFeedback' => 'reservation#enterFeedback'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

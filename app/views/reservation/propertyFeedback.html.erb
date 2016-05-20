@@ -1,7 +1,7 @@
-<div class="property feedback">
+<div class="proeprty feedback">
   <h2>Leave feedback</h2>
 
-  <%= form_for(:reservation, :url => {:action => 'enterfeedback', :reservation_id => @reservation.id, :property_id => @property.id}) do |f| %>
+  <%= form_for(:reservation, :url => {:action => 'enterFeedback', :reservation_id => @reservation.id, :property_id => @reservation.property_id}) do |f| %>
   <table summary="feedback form fields">
     <tr>
       <th>Rating</th>
