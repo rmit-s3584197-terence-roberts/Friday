@@ -1,28 +1,25 @@
-== README
+== README!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+=Friday.  Stay your way.
 
-Things you may want to cover:
+Friday is the world's largest and - dare we say - funnest! - way to stay your way around the world. Share your home, and be rewarded with points that you can use to stay in other homes. Anywhere. Any Friday. 
 
-* Ruby version
+* Ruby/Rails version:
 
-* System dependencies
+We built Friday on Ruby 2.3 and Rails 4.2. 
 
-* Configuration
+* Services:
 
-* Database creation
+Friday uses Google Places API, so you'll require a network connection in order to use this functionality.
 
-* Database initialization
+* Deployment instructions:
 
-* How to run the test suite
+Running your own copy of Friday is super easy.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+1. Install Rails!
+2. Download the source
+3. Change database.yml to suit your own DB requirements
+4. Install all Gems ('bundle install')
+5. Use 'rake db:reset' and 'rake db:migrate' to ensure all models are up to date.
+5. Run the server
+6. Load up localhost:3000, and you should be good to go.
