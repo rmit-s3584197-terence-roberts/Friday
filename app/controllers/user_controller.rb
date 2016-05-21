@@ -26,6 +26,7 @@ class UserController < ApplicationController
 
   def edit
     @user = User.find_by_id(params[:id])
+    flash[:notice] = "User ID being passed is: #{@user.username}"
   end
 
   def update
