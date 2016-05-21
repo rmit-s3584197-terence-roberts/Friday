@@ -1,7 +1,7 @@
 <header class="navbar navbar-fixed-top navbar-default">
   <div class="container-fluid">
     <nav>
-          <%= link_to  image_tag('logo.png', height: '40', width: '110',  :style => "padding-bottom: -10px padding-top: 25px"), 
+          <%= link_to  image_tag('logo.png', height: '40', width: '110'), 
       url_for({:controller => 'main', :action => 'index'})  %>
       <ul class="nav navbar-nav  navbar-right">
       <% if current_user %>
@@ -21,21 +21,6 @@
   <p /> 
 </header>
 <br />
-
-<% if notice || alert %>
-<div class="flash-message <%= notice ? "notice" : ""%><%= alert ? "error" : ""%>">
-  <div class="container col-lg-12 clearfix">
-    <div class="col-lg-12">
-      <% if notice %>
-      <p><%= notice %></p>
-      <% elsif alert %>
-      <p><%= alert %></p>
-      <% end %>
-    </div>
-  </div>
-</div>
-<p />
-<% end %>
 
 
 

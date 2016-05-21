@@ -39,7 +39,7 @@ class MainController < ApplicationController
       flash[:notice] = "You are now logged in. Welcome back to Friday, #{authorized_user.first_name}!"
       redirect_to(:controller => 'user', :action => 'show')
     else
-      flash[:notice] = "Invalid username/password combination."
+      flash[:alert] = "Invalid username/password combination."
       redirect_to(:action => 'login')
     end
   end
