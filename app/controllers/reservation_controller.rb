@@ -11,6 +11,41 @@ class ReservationController < ApplicationController
 
   end
 
+  def userRating
+    @user = User.find_by_id(params[:guest_id])
+    @reservation = Reservation.find_by_id(params[:reservation_id])
+  end
+
+  def enterRating
+    @reservation = Reservation.find_by_id(params[:reservation_id])
+    @user = User.find_by_id(params[:user_id])
+    @allReservations = Reservation.all.where(user_id: params[:user_id])
+
+    @reservation.update_attribute(:guest_rating, params[:reservation][:guest_rating])
+
+    sumratings = 0
+    @allReservations.each{|x| sumratings=sumratings+x[:guest_rating]};
+    @user.update_attribute(:rating, (sumratings/@allReservations.length))
+    redirect_to(:controller => 'reservation', :action => 'index', :user_id => @user.id)
+  end
+
+  def propertyFeedback
+    @reservation = Reservation.find_by_id(params[:reservation_id])
+  end
+
+  def enterFeedback
+    @reservation = Reservation.find_by_id(params[:reservation_id])
+    @property = Property.find_by_id(params[:property_id])
+    @allReservations = Reservation.all.where(property_id: params[:property_id])
+
+    @reservation.update_attribute(:property_rating, params[:reservation][:property_rating])
+
+    sumratings = 0
+    @allReservations.each{|x| sumratings=sumratings+x[:property_rating]};
+    @property.update_attribute(:rating, (sumratings/@allReservations.length))
+    redirect_to(:controller => 'reservation', :action => 'index', :user_id => session[:user_id])
+  end
+
   def new
   	@property = Property.find_by_id(params[:id])
     @guest = User.find_by_id(session[:user_id])
@@ -37,9 +72,8 @@ class ReservationController < ApplicationController
     @guest = User.find_by_id(params[:guest_id])
     @property = Property.find_by_id(params[:property_id])
     @reservation = Reservation.find_by_id(params[:reservation_id])
-    if @reservation.save
+    if @reservation.update_attribute(:status, "accepted")
       flash[:notice] = "Reservation has been confirmed."
-      @reservation.update_attribute(:status, "accepted")
       @host.update_attribute(:points, @host.points + @property.num_points)
       @guest.update_attribute(:points, @guest.points - @property.num_points)
       #ReservationMailer.response_accept_email(@guest)

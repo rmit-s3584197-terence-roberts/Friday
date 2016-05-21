@@ -1,7 +1,7 @@
-<div class="user feedback">
+<div class="user rating">
   <h2>Leave feedback</h2>
 
-  <%= form_for(:reservation, :url => {:action => 'enterfeedback', :reservation_id => @reservation.id, :user_id => @user.id}) do |f| %>
+  <%= form_for(:reservation, :url => {:action => 'enterRating', :reservation_id => @reservation.id, :user_id => @user.id}) do |f| %>
   <table summary="feedback form fields">
     <tr>
       <th>Rating</th>
