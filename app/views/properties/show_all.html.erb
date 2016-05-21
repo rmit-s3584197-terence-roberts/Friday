@@ -4,24 +4,26 @@
 </div>
 </div>
 
-<div class="properties index">
-<h2>Where will you be on Friday?</h2>
-
-<div class="container-float">
-  <div class="row">
-    <% @properties.each do |property| %>
-	  <% user = User.find_by_id(property.user_id) %>
-	    <% image = property.photo.url %>
-		  <div class="col-lg-4 col-xs-3 col-lg-4 thumb">
-		      <a class="thumbnail" href= <%= "/properties/show/?id=#{property.id}" %> >
-		        <img class="img-responsive" src= <%= "#{image}" %> alt="">
-		      </a>
-		  Stay with <%= link_to("#{user.first_name.camelize}",
-			{:controller => 'user', :action => 'show', :id => user}) %>
-			in <%= property.city.camelize %>
-		</div>
-	<% end %>
+<div class="properties">
+	<div align="center">
+		<h2>Where will you be on Friday?</h2>
 	</div>
 </div>
 
+<div class="container">
+	<% @properties.each do |property| %>
+	<% user = User.find_by_id(property.user_id) %>
+	<% image = property.photo.url %>
+	<div class="col-sm-6 col-md-4">
+		<div class="thumbnail">
+			<a href= <%= "/properties/show/?id=#{property.id}" %> >
+				<img src=<%= "#{image}" %>><br>
+			</a>
+			Stay with 
+			<%= link_to("#{user.first_name.camelize}", {:controller => 'user', :action => 'show', :id => user}) %> 
+			in 
+			<%= property.city.camelize %>
+		</div>
+	</div>	 
+	<% end %>
 </div>

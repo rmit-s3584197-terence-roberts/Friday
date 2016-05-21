@@ -34,3 +34,11 @@ $(function() {
     })(this));
     return setTimeout(flashCallback, 2000);
 });
+
+ $(document).ready(function() {
+    var maxHeight = 0;          
+    $(".thumbnail").each(function(){
+      if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
+    });         
+    $(".thumbnail").height(maxHeight);
+  });
