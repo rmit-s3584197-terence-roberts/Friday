@@ -33,6 +33,9 @@ class UserController < ApplicationController
     if @user.update_attributes(user_params)
       flash[:notice] = "User updated successfully"
       redirect_to(:action => 'show', :id => @user.id)
+     else
+      flash[:notice] = "There was a problem updating your profile."
+      redirect_to :controller => 'user', :action => 'edit', :id => @user
     end
   end
 
@@ -49,7 +52,7 @@ class UserController < ApplicationController
   private
     def user_params
       params.require(:user).permit( :username, :password, :password_confirmation,
-        :first_name, :last_name, :email, :address, :city, :country, :phone, :rating)
+        :first_name, :last_name, :email, :address, :city, :country, :phone, :rating, :userpic)
     end
 
 end

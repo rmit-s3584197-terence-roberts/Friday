@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
   get '/signup' => 'user#new'
   post '/users' => 'user#create'
+  get '/users/delete' => 'user#delete'
+  post '/users/delete' => 'user#delete'
+  get '/users/destroy' => 'user#destroy'
+  post '/users/destroy' => 'user#destroy'
 
   get '/properties/update' => 'properties#update'
   get '/properties/destroy' => 'properties#destroy'
