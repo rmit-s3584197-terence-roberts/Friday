@@ -1,30 +1,26 @@
-  	  <%= f.label :username %><br />
-  	  <%= f.text_field(:username) %><br />
-  
-  	  <%= f.label :password %><br />
-  	  <%= f.password_field(:password) %><br />
 
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field(:password_confirmation) %><br />
-  	
-  	  <%= f.label :first_name %><br />
-  	  <%= f.text_field(:first_name) %><br />
-  	
-  	  <%= f.label :last_name %><br />
-  	  <%= f.text_field(:last_name) %><br />
-  	
-  	  <%= f.label :email %><br />
-  	  <%= f.email_field(:email) %><br />
-  	
-  	  <%= f.label :city %><br />
-  	  <%= f.text_field(:city) %><br />
-  	
-  	  <%= f.label :country %><br />
-  	  <%= f.text_field(:country) %><br />
-  	
-  	  <%= f.label :address %><br />
-  	  <%= f.text_field(:address) %><br />
+    
+      <%= label_tag(:first_name, nil, :class => 'hidden') %>
+      <%= text_field_tag(:first_name, nil, :class => 'form-control', :placeholder => 'First name') %>
+    
+      <%= label_tag(:last_name, nil, :class => 'hidden') %>
+      <%= text_field_tag(:last_name, nil, :class => 'form-control', :placeholder => 'Last name') %>
+    
+      <%= label_tag(:email, nil, :class => 'hidden') %>
+      <%= text_field_tag(:email, nil, :class => 'form-control', :placeholder => 'Email address') %>
+
+      <%= label_tag(:address, nil, :class => 'hidden') %>
+      <%= text_field_tag(:address, nil, :class => 'form-control', :placeholder => 'Street Address') %>
+    
+      <%= label_tag(:city, nil, :class => 'hidden') %>
+      <%= text_field_tag(:city, nil, :class => 'form-control', :placeholder => 'City') %>
+    
+      <%= label_tag(:country, nil, :class => 'hidden') %>
+      <%= text_field_tag(:country, nil, :class => 'form-control', :placeholder => 'Country') %>
   
-  	  <%= f.label :phone %><br />
-  	  <%= f.telephone_field(:phone) %><br />
-  	
+      <%= label_tag(:phone, nil, :class => 'hidden') %>
+      <%= telephone_field_tag(:phone, nil, :class => 'form-control', :placeholder => 'Phone') %><br />
+
+      <%= label_tag(:userpic, nil, :class => 'hidden') %>
+      <%= file_field_tag(:userpic, :class => 'form-control') %><br />
+    

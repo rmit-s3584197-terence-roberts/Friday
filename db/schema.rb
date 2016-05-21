@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516132230) do
+ActiveRecord::Schema.define(version: 20160521055540) do
 
   create_table "properties", force: :cascade do |t|
     t.string   "name",                  limit: 50,                 null: false
@@ -58,19 +58,23 @@ ActiveRecord::Schema.define(version: 20160516132230) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",        limit: 50,                               null: false
-    t.string   "first_name",      limit: 30,                               null: false
-    t.string   "last_name",       limit: 30,                               null: false
-    t.string   "email",           limit: 255,                              null: false
-    t.string   "password_digest", limit: 255
-    t.string   "city",            limit: 255,                              null: false
-    t.string   "country",         limit: 255,                              null: false
-    t.string   "address",         limit: 255,                              null: false
-    t.string   "phone",           limit: 255,                              null: false
-    t.integer  "points",          limit: 4,                  default: 600, null: false
-    t.decimal  "rating",                      precision: 10
+    t.string   "username",             limit: 50,                               null: false
+    t.string   "first_name",           limit: 30,                               null: false
+    t.string   "last_name",            limit: 30,                               null: false
+    t.string   "email",                limit: 255,                              null: false
+    t.string   "password_digest",      limit: 255
+    t.string   "city",                 limit: 255,                              null: false
+    t.string   "country",              limit: 255,                              null: false
+    t.string   "address",              limit: 255,                              null: false
+    t.string   "phone",                limit: 255,                              null: false
+    t.integer  "points",               limit: 4,                  default: 600, null: false
+    t.decimal  "rating",                           precision: 10
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "userpic_file_name",    limit: 255
+    t.string   "userpic_content_type", limit: 255
+    t.integer  "userpic_file_size",    limit: 4
+    t.datetime "userpic_updated_at"
   end
 
 end

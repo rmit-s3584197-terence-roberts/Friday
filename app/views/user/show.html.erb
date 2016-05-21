@@ -1,52 +1,81 @@
-<p />
-<br />
-<p />
-<p />
+<%= stylesheet_link_tag "user_details" %>
 
-<div class="users show">
-	<h2>My details</h2>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+			<div class="panel panel-info">
+				<div class="panel-heading">
 
-	<table summary="user detail view">
-	<tr>
-		<th>Username: </th>
-		<td><%= @user.username %></td>
-	</tr>
-	<tr>
-		<th>First Name:</th>
-		<td><%= @user.first_name %></td>
-	</tr>
-	<tr>
-		<th>Last Name: </th>
-		<td><%= @user.last_name %></td>
-	</tr>
-	<tr>
-		<th>Email: </th>
-		<td><%= @user.email %></td>
-	</tr>
-	<tr>
-		<th>Address: </th>
-		<td><%= @user.address.titleize() +", " + @user.city.capitalize() + ", " + @user.country.capitalize() %></td>
-	</tr>
-	<tr>
-		<th>Phone: </th>
-		<td><%= @user.phone %></td>
-	</tr>
-	<tr>
-		<th>Points: </th>
-		<td><%= @user.points %></td>
-	</tr>
-	<tr>
-		<th>Rating: </th>
-		<td><%= @user.rating %></td>
-	</tr>
-	</table>
+					<span class="pull-right">
+					<%= link_to("Edit Profile", {:action => 'edit', :id => @user.id}, :class => "btn btn-primary btn-xs") %>
+						<%= link_to("Delete Profile", {:action => 'delete', :id => @user.id}, :class => "btn btn-danger btn-xs") %>
+					</span>
+					<h3 class="panel-title"><%= @user.username.capitalize() + " " + @user.last_name.capitalize() %></h3>
 
-	<br />
-	<%= link_to("Edit", {:action => 'edit', :id => @user.id}) %>
-	<br />
-	<%= link_to("Add Property", {:controller => 'properties', :action => 'new', :user_id => @user.id}) %>
-	<br />
-	<%= link_to("Show all Properties you have", {:controller => 'properties', :action => 'index', :user_id => @user.id}) %>
-	<br />
-	<%= link_to("Reservations", {:controller => 'reservation', :action => 'index', :user_id => @user.id}) %>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-3 col-lg-3 " align="center">
+
+							<%=image_tag(@user.userpic.url, class: "img-circle img-responsive") if @user.userpic?%>
+
+						</div>
+						<div class=" col-md-9 col-lg-9 "> 
+							<table class="table table-user-information">
+								<tbody>
+									<tr>
+										<th>Username: </th>
+										<td><%= @user.username.capitalize %></td>
+									</tr>
+									<tr>
+										<th>First Name:</th>
+										<td><%= @user.first_name.capitalize %></td>
+									</tr>
+									<tr>
+										<th>Last Name: </th>
+										<td><%= @user.last_name.capitalize %></td>
+									</tr>
+									<tr>
+										<th>Email: </th>
+										<td><%= @user.email %></td>
+									</tr>
+									<tr>
+										<th>Address: </th>
+										<td><%= @user.address.titleize() +", " + @user.city.capitalize() + ", " + @user.country.capitalize() %></td>
+									</tr>
+									<tr>
+										<th>Phone: </th>
+										<td><%= @user.phone %></td>
+									</tr>
+									<tr>
+										<th>Points: </th>
+										<td><%= @user.points %></td>
+									</tr>
+									<tr>
+										<th>Rating: </th>
+										<td><%= @user.rating %></td>
+									</tr>
+
+								</tbody>
+							</table>
+
+						</div>
+					</div>
+				</div>
+				<div class="panel-footer">
+
+			
+						<%= link_to("Add Property", {:controller => 'properties', :action => 'new', :user_id => @user.id}, :class => "btn btn-primary") %>
+						<%= link_to("Show Properties", {:controller => 'properties', :action => 'index', :user_id => @user.id}, :class => "btn btn-primary") %>
+						<%= link_to("Reservations", {:controller => 'reservation', :action => 'index', :user_id => @user.id}, :class => "btn btn-primary") %>
+
+				
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
 </div>

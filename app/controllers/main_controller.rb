@@ -36,7 +36,7 @@ class MainController < ApplicationController
     if authorized_user
       session[:user_id] = authorized_user.id
       session[:username] = authorized_user.username
-      flash[:notice] = "You are now logged in. Welcome back to Friday, #{authorized_user.first_name}!"
+      flash[:notice] = "You are now logged in. Welcome back to Friday, #{authorized_user.first_name.capitalize}!"
       redirect_to(:controller => 'user', :action => 'show')
     else
       flash[:alert] = "Invalid username/password combination."

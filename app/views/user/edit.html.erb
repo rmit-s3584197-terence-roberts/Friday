@@ -1,13 +1,96 @@
-
 <div class="user edit">
   <h2>Edit your profile</h2>
+  
+<%= stylesheet_link_tag "login" %>
+<%= stylesheet_link_tag "user_details" %>
+
+<div class="container">
+<div class="col-lg-3 col-lg-6 col-lg-3">
+  <div class="form-signin">
+  <h2 class="form-signin-heading">Edit your profile</h2>
 
   <%= form_for(:user, :url => {:action => 'update', :id => @user.id}) do |f| %>
-  
-  	<%= render(:partial => "form", :locals => {:f => f}) %>
 
-  	<div class="form-buttons">
-  		<%= submit_tag("Edit") %>
-  	</div>
-  <% end %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-0 toppad" >
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<span class="pull-right">
+						<%= link_to("Delete Profile", {:action => 'delete', :id => @user.id}, :class => "btn btn-danger btn-xs") %>
+					</span>
+					<h3 class="panel-title"><%= @user.username.capitalize() + " " + @user.last_name.capitalize() %></h3>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-3 col-lg-3 " align="center">
+						  <%= image_tag @user.userpic.url, class: "img-circle img-responsive" if @user.userpic?%>
+						</div>
+						<div class=" col-md-9 col-lg-9 "> 
+							<table class="table table-user-information">
+								<tbody>
+									<tr>
+										<th>First Name:</th>
+										<td><%= f.text_field :first_name, :class => 'form-control', :placeholder => 'First name' %></td>
+									</tr>
+									<tr>
+										<th>Last Name: </th>
+										<td><%= f.text_field :last_name, :class => 'form-control', :placeholder => 'Last name' %></td>
+									</tr>
+									<tr>
+										<th>Email: </th>
+										<td><%= f.text_field :email, :class => 'form-control', :placeholder => 'Email address' %></td>
+									</tr>
+									<tr>
+										<th>Address: </th>
+										<td><%= f.text_field :address, :class => 'form-control', :placeholder => 'Street Address' %></td>
+									</tr>
+									<tr>
+										<th>City: </th>
+										<td><%= f.text_field :city, :class => 'form-control', :placeholder => 'City' %></td>
+									</tr>
+									<tr>
+										<th>Country: </th>
+										<td><%= f.text_field :country, :class => 'form-control', :placeholder => 'Country' %></td>
+									</tr>
+									<tr>
+										<th>Phone: </th>
+										<td><%= f.telephone_field :phone, :class => 'form-control', :placeholder => 'Phone' %></td>
+									</tr>
+									<tr>
+										<th>Profile picture: </th>
+										<td><%= f.file_field :userpic, :class => 'form-control' %></td>
+									</tr>
+									<tr>
+										<th>Password: </th>
+										<td><%= f.password_field :password, :class => 'form-control', :placeholder => 'Password' %></td>
+									</tr>
+									<tr>
+										<th>Confirm password: </th>
+										<td><%= f.password_field :password_confirmation, :class => 
+										  'form-control', :placeholder => 'Confirm password' %></td>
+									</tr>
+								</tbody>
+							</table>
+
+						</div>
+					</div>
+				</div>
+				<div class="panel-footer">
+				<div align="center">
+			  		  <%= submit_tag("Edit", :class => "btn btn-primary") %>
+			  		  </div>
+			  		  <% end %>
+			  	  </div>				
+				</div>
+
+			</div>
+		</div>
+	</div>
 </div>
+
+</div>
+
+
+
+

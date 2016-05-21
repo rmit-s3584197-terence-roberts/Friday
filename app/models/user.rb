@@ -12,4 +12,7 @@ class User < ActiveRecord::Base
   	validates :email, presence: true, uniqueness: { case_sensitive: false }
   	validates_presence_of :first_name, :last_name, :password, :city, :country, :address, :phone
 
+  	has_attached_file :userpic
+    validates_attachment_content_type :userpic, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+
 end
