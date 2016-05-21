@@ -2,30 +2,41 @@
 <div class="properties index">
 	<h2>Properties</h2>
 
-	<table class="listing" summary = "property list">
-		<tr class="header">
-			<th>Property Name</th>
-			<th>Owner Name</th>
-			<th>Country</th>
-			<th>City</th>
-		</tr>
-		<% @properties.each do |property| %>
-		<% user = User.find_by_id(property.user_id) %>
-		<tr>
-			<td><%= property.name %></td>
-			<td><%= "#{user.first_name} #{user.last_name}" %></td>
-			<td><%= property.country %></td>
-			<td><%= property.city %></td>
-			<td class="actions">
-				<%= link_to("Show", {:action => 'show', :id => property.id}, :class => 'action show') %>
-				<%= link_to("Edit", {:action => 'edit', :id => property.id}, :class => 'action edit') %>
-				<%= link_to("Delete", {:action => 'delete', :id => property.id}, :class => 'action delete') %>
+	<div class="panel panel-default">
+		<div class="panel-heading">My Properties</div>
+		<div class="panel-body">
+			<span class="pull-right">
+				<%= link_to("Add new property", {:action => 'new'}, :class => 'btn btn-primary') %>
+			</span>
+		</div>
 
-			</td>
-		</tr>
-		<% end %>
-		<td class="actions">
-			  <%= link_to("Add new property", {:action => 'new'}, :class => 'action new') %>
-		</td>
-	</table>
+
+		<table class="table">
+			<thead>
+				<th>Property Name</th>
+				<th>Owner Name</th>
+				<th>Country</th>
+				<th>City</th>
+			</thead>
+			<tbody>
+				<% @properties.each do |property| %>
+				<% user = User.find_by_id(property.user_id) %>
+				<tr>
+					<td><%= property.name %></td>
+					<td><%= "#{user.first_name} #{user.last_name}" %></td>
+					<td><%= property.country %></td>
+					<td><%= property.city %></td>
+					<td class="actions">
+						<%= link_to("Show", {:action => 'show', :id => property.id}, :class => 'action show') %>
+						<%= link_to("Edit", {:action => 'edit', :id => property.id}, :class => 'action edit') %>
+						<%= link_to("Delete", {:action => 'delete', :id => property.id}, :class => 'action delete') %>
+
+					</td>
+				</tr>
+			</tbody>
+			<% end %>
+		</table>
+	</div>
+
+
 </div>
