@@ -1,3 +1,6 @@
+<div class="user edit">
+  <h2>Edit your profile</h2>
+  
 <%= stylesheet_link_tag "login" %>
 <%= stylesheet_link_tag "user_details" %>
 
@@ -6,9 +9,7 @@
   <div class="form-signin">
   <h2 class="form-signin-heading">Edit your profile</h2>
 
-  <%= form_tag(:controller => 'user', :action => 'update') do -%>
-   <% user = @user %>
-    <%= hidden_field_tag 'user[:user_id]', @user.id %>
+  <%= form_for(:user, :url => {:action => 'update', :id => @user.id}) do |f| %>
 
 <div class="container">
 	<div class="row">
@@ -23,51 +24,51 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-md-3 col-lg-3 " align="center">
-						  <%=image_tag(@user.userpic.url, class: "img-circle img-responsive") if @user.userpic?%>
+						  <%= image_tag @user.userpic.url, class: "img-circle img-responsive" if @user.userpic?%>
 						</div>
 						<div class=" col-md-9 col-lg-9 "> 
 							<table class="table table-user-information">
 								<tbody>
 									<tr>
 										<th>First Name:</th>
-										<td><%= text_field_tag('user[:first_name]', nil, :class => 'form-control', :placeholder => 'First name') %></td>
+										<td><%= f.text_field :first_name, :class => 'form-control', :placeholder => 'First name' %></td>
 									</tr>
 									<tr>
 										<th>Last Name: </th>
-										<td><%= text_field_tag('user[:last_name]', nil, :class => 'form-control', :placeholder => 'Last name') %></td>
+										<td><%= f.text_field :last_name, :class => 'form-control', :placeholder => 'Last name' %></td>
 									</tr>
 									<tr>
 										<th>Email: </th>
-										<td><%= text_field_tag('user[:email]', nil, :class => 'form-control', :placeholder => 'Email address') %></td>
+										<td><%= f.text_field :email, :class => 'form-control', :placeholder => 'Email address' %></td>
 									</tr>
 									<tr>
 										<th>Address: </th>
-										<td><%= text_field_tag('user[:address]', nil, :class => 'form-control', :placeholder => 'Street Address') %></td>
+										<td><%= f.text_field :address, :class => 'form-control', :placeholder => 'Street Address' %></td>
 									</tr>
 									<tr>
 										<th>City: </th>
-										<td><%= text_field_tag('user[:city]', nil, :class => 'form-control', :placeholder => 'City') %></td>
+										<td><%= f.text_field :city, :class => 'form-control', :placeholder => 'City' %></td>
 									</tr>
 									<tr>
 										<th>Country: </th>
-										<td><%= text_field_tag('user[:country]', nil, :class => 'form-control', :placeholder => 'Country') %></td>
+										<td><%= f.text_field :country, :class => 'form-control', :placeholder => 'Country' %></td>
 									</tr>
 									<tr>
 										<th>Phone: </th>
-										<td><%= telephone_field_tag('user[:phone]', nil, :class => 'form-control', :placeholder => 'Phone') %></td>
+										<td><%= f.telephone_field :phone, :class => 'form-control', :placeholder => 'Phone' %></td>
 									</tr>
 									<tr>
 										<th>Profile picture: </th>
-										<td><%= file_field_tag('user[:userpic]', :class => 'form-control') %></td>
+										<td><%= f.file_field :userpic, :class => 'form-control' %></td>
 									</tr>
 									<tr>
 										<th>Password: </th>
-										<td><%= password_field_tag('user[:password]', nil, :class => 'form-control', :placeholder => 'Password') %></td>
+										<td><%= f.password_field :password, :class => 'form-control', :placeholder => 'Password' %></td>
 									</tr>
 									<tr>
 										<th>Confirm password: </th>
-										<td><%= password_field_tag('user[:password_confirmation]', nil, :class => 
-										  'form-control', :placeholder => 'Confirm password') %></td>
+										<td><%= f.password_field :password_confirmation, :class => 
+										  'form-control', :placeholder => 'Confirm password' %></td>
 									</tr>
 								</tbody>
 							</table>
@@ -77,7 +78,7 @@
 				</div>
 				<div class="panel-footer">
 				<div align="center">
-			  		  <%= submit_tag("Edit", :class => "btn btn-primary", :user => @user.id) %>
+			  		  <%= submit_tag("Edit", :class => "btn btn-primary") %>
 			  		  </div>
 			  		  <% end %>
 			  	  </div>				
@@ -89,4 +90,7 @@
 </div>
 
 </div>
+
+
+
 

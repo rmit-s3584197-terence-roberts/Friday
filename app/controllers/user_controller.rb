@@ -31,6 +31,7 @@ class UserController < ApplicationController
 
   def update
     @user = User.find_by_id(params[:id])
+
     if @user.update_attributes(user_params)
       flash[:notice] = "User updated successfully"
       redirect_to(:action => 'show', :id => @user.id)
