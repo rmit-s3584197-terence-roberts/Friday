@@ -7,7 +7,7 @@ class UserSessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/'
     else
-      redirect_to '/login'
+      redirect_to '/main/login'
     end
   end
 

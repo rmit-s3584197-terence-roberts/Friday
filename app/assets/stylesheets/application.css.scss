@@ -17,29 +17,7 @@
  *= require_self
  */
 
+@import "style";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import url(https://fonts.googleapis.com/css?family=Marck+Script);
-
-.flash-message {
-&.error {
-  border: solid 2px #900;
-  background-color: #FF6565;
-  border-radius: 10px;
-}
-&.notice {
-  border: solid 2px #26722D;
-  background-color: #A4E7A0;
-  border-radius: 10px;
-}
-  color: black;
-  z-index: 999;
-  position: fixed;
-  font-weight: bold;
-  width: 96%;
-  margin: 20px;
-p {
-  font-size: 110%;
-  margin: 15px 0;
-}
-}

@@ -4,39 +4,39 @@
 <p />
 
 <div class="users show">
-	<h2>Show User</h2>
+	<h2>My details</h2>
 
 	<table summary="user detail view">
 	<tr>
-		<th>Name</th>
+		<th>Username: </th>
 		<td><%= @user.username %></td>
 	</tr>
 	<tr>
-		<th>First Name</th>
+		<th>First Name:</th>
 		<td><%= @user.first_name %></td>
 	</tr>
 	<tr>
-		<th>Last Name</th>
+		<th>Last Name: </th>
 		<td><%= @user.last_name %></td>
 	</tr>
 	<tr>
-		<th>Email</th>
+		<th>Email: </th>
 		<td><%= @user.email %></td>
 	</tr>
 	<tr>
-		<th>Address</th>
-		<td><%= @user.address + @user.city+ @user.country %></td>
+		<th>Address: </th>
+		<td><%= @user.address.titleize() +", " + @user.city.capitalize() + ", " + @user.country.capitalize() %></td>
 	</tr>
 	<tr>
-		<th>Phone</th>
+		<th>Phone: </th>
 		<td><%= @user.phone %></td>
 	</tr>
 	<tr>
-		<th>Points</th>
+		<th>Points: </th>
 		<td><%= @user.points %></td>
 	</tr>
 	<tr>
-		<th>Rating</th>
+		<th>Rating: </th>
 		<td><%= @user.rating %></td>
 	</tr>
 	</table>
