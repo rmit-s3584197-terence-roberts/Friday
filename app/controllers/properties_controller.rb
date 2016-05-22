@@ -13,8 +13,7 @@ class PropertiesController < ApplicationController
   def show
 
     @property = Property.find_by_id(params[:id])
-    @owner_id = @property.user_id
-    @host = User.find_by_id(params[@owner_id])
+    @host = User.find_by_id(@property.user_id)
 
   end
 
@@ -71,7 +70,7 @@ class PropertiesController < ApplicationController
     if @property.update_attributes(property_params)
       flash[:notice] = "Property updated successfully"
       redirect_to(:action => 'show', :id => @property.id)
-      
+
     else
       flash[:alert] = "Property not updated!"
       render('edit')
