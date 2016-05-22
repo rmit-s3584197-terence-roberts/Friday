@@ -27,13 +27,13 @@
   display: inline;
 }
 
-.jumbotron {
+.jumbotron .main {
   background-image: url(image-path('london.png'));
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.jumbotron .container {
+.jumbotron .main .container {
  position: relative;
  padding-left: 500px;
  padding-right: 300px;
@@ -44,19 +44,19 @@
 
 }
 
-.jumbotron .container h1 {
+.jumbotron .main .container h1 {
   color: #ff530d;
   font-family: 'Marck Script', cursive;
   font-size: 170px;  
   font-weight: bold;
 }
 
-.jumbotron p {
+.jumbotron .main p {
   font-size: 20px;
   font-weight: bold;
   color: #0c0c0c;
   padding-top: 20px;
-  opacity: 0.5;
+
 }
 
 

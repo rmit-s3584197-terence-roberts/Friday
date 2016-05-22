@@ -1,21 +1,24 @@
 <div class="jumbotron">
+<div class="main">
   <div class="container">
-    <h1>Friday.</h1>
+    <div align="center"><h1>Friday.</h1></div>
   </div>
   <p />
-  <p />
+  <p /><br />
 
   <div class="search">
     <div class="form-section">
         <div class="row">
 
           <%= form_tag(:controller => "search", :action => "search") do %>
+
             <div class="col-md-6">
               <div class="form-group">
                 <%= text_field_tag :location, params[:location], :class => 'form-control', :placeholder => 
                 'Where will you be on Friday?', :id => 'geo-input' %>
               </div>
             </div>
+
             <div class="col-md-3">
               <div class="form-group">
                 <div class="input-group">
@@ -26,8 +29,10 @@
              </div>
            </div>
            <div class="col-md-3">
-           <%= submit_tag "Go!", :class => "btn btn-default btn-primary" %>
+           <%= submit_tag "Go!", :class => "btn btn-default btn-danger" %>
+
           </div>
+          <p></p>
         <% end %>
 
       </div>
