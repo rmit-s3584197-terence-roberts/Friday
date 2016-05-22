@@ -14,10 +14,6 @@
 		<td><%= @property.num_points %></td>
 	</tr>
 	<tr>
-		<th>Reviews</th>
-		<td><%= "..." %></td>
-	</tr>
-	<tr>
 		<th>Book this property</th>
 		<%= link_to("Book now!", {:controller => 'reservation', :action => 'new', :id => @property.id}) %>
 	</tr>

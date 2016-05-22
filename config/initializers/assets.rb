@@ -12,3 +12,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( login.css.scss )
 Rails.application.config.assets.precompile += %w( user_details.css.scss )
 Rails.application.config.assets.precompile += %w( jquery.geocomplete.js )
+Rails.application.config.assets.precompile += %w( validator.js )

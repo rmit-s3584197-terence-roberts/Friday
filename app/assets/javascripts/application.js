@@ -16,6 +16,7 @@
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require jquery.geocomplete
+//= require bootstrapValidator.min
 //= require_tree .
 
 $(function() {
@@ -42,3 +43,16 @@ $(function() {
     });         
     $(".thumbnail").height(maxHeight);
   });
+
+ $(form)
+    .bootstrapValidator({
+        ...
+    })
+    .on('success.form.bv', function(e) {
+        // Called when the form is valid
+
+        var $form = $(e.target);
+        if ($form.data('remote') && $.rails !== undefined) {
+            e.preventDefault();
+        }
+    });
