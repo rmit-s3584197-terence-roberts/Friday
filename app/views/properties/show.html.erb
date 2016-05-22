@@ -1,3 +1,52 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="jumbotron">
+				<h2>
+					<%= @property.name.titleize() %> 
+				</h2>
+				<p>
+					<%= link_to("Book now!", {:controller => 'reservation', :action => 'new', :id => @property.id}, class: "btn btn-primary btn-large") %>
+				</p>
+			</div>
+	        <div class="progress progress-striped">
+	            <% @percentage = @current_user.points / @property.num_points * 100 %>
+	            <% puts @percentage %>
+	            <div class="progress-bar" role="progressbar" aria-valuenow=<%=@percentage.to_s%> aria-valuemin="0" 
+	              aria-valuemax="100" style=<%= "width" + @percentage.to_s + "%;"%>><%= @percentage.to_s %>
+	            </div>
+	        </div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="progress progress-striped">
+						<div class="progress-bar progress-success">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<%= image_tag @host.userpic.url, class: "img-circle img-responsive", height: '100', width: '110' if @host.userpic?%>
+		</div>
+		<div class="col-md-4">
+			<h2>
+				<%= @property.num_rooms.to_s %> bedroom house in <%= @property.city.titleize() %>
+			</h2>
+			<p>
+				Stay your way with <%= @host.first_name.titleize() %>. You can find the exact location of this property by 
+				clicking here.  If you would like to reach out to <%= @host.first_name.titleize() %> for more information,
+				click here.
+			</p>
+		</div>
+		<div class="col-md-4">
+		    <%= image_tag('rating.png', class: "img-rounded", height: '100', width: '110') %>
+		</div>
+	</div>
+</div>
+
+
 <div class="user show">
 	<h2><%=  @property.name.titleize %> </h2>
 	<table summary="properties detail view">
@@ -15,7 +64,7 @@
 	</tr>
 	<tr>
 		<th>Book this property</th>
-		<%= link_to("Book now!", {:controller => 'reservation', :action => 'new', :id => @property.id}) %>
+		
 	</tr>
 	</table>
 	<br />

@@ -6,10 +6,16 @@ class PropertiesController < ApplicationController
   def index
     @properties = Property.all.where(user_id: params[:user_id])
     @owner_id = params[:user_id]
+    @host = User.find_by_id([@owner_id])
+    flash[:notice] = "@host.userpic.url is: #{@host.userpic.url}"
   end
 
   def show
+
     @property = Property.find_by_id(params[:id])
+    @owner_id = params[:user_id]
+    @host = User.find_by_id([@owner_id])
+
   end
 
   def browseshow
@@ -28,7 +34,7 @@ class PropertiesController < ApplicationController
 
   def new
     @user = User.find_by_id(params[:id])
-    @properties = Property.new
+    @property = Property.new
   end
 
   def create
@@ -39,7 +45,7 @@ class PropertiesController < ApplicationController
       flash[:notice] = "Property created successfully"
       redirect_to :action => 'show', :id => @property.id
     else
-      flash[:notice] = "Property was not created"
+      flash[:alert] = "Property was not created"
       render('new')
     end
   end

@@ -2,60 +2,105 @@
 <div class="properties new">
   <h2>Add New Property</h2>
 
-  <%= form_for(:property, :url => {:action => 'create'}, :html => { :multipart => true}) do |f| %>
-  	<table summary="properties form fields">
-  	<tr>
-  	  <th>Property name</th>
-  	  <td><%= f.text_field(:name) %></td>
-  	</tr>
-  	<tr>
-  	  <td><%= f.hidden_field(:user_id, :value => session[:user_id], :readonly => true) %></td>
-  	</tr>
-    <tr>
-      <th>Address</th>
-      <td><%= f.text_field(:address) %></td>
-    </tr>
-    <tr>
-      <th>City</th>
-      <td><%= f.text_field(:city) %></td>
-    </tr>
-  	<tr>
-  	  <th>Country</th>
-  	  <td><%= f.text_field(:country) %></td>
-  	</tr>
-  	<tr>
-  	  <th>Number of rooms</th>
-  	  <td><%= f.number_field(:num_rooms, in: 1..20) %></td>
-  	</tr>
-  	<tr>
-  	  <th>Air-conditioned?</th>
-  	  <td><%= f.radio_button(:ac_available, "1") %>
-  	  		<%= f.label(:ac_available, "Yes") %>
-  	  		<%= f.radio_button(:ac_available, "0") %>
-  	  		<%= f.label(:ac_available, "No") %>
-  	  </td>
-  	</tr>
-  	<tr>
-  	  <th>Swimming Pool?</th>
-  	  <td><%= f.radio_button(:pool_available, "1") %>
-  	  		<%= f.label(:pool_available, "Yes") %>
-  	  		<%= f.radio_button(:pool_available, "0") %>
-  	  		<%= f.label(:pool_available, "No") %>
-  	  </td>
-  	</tr>
-  	<tr>
-  	  <th>Points required for reservation</th>
-  	  <td><%= f.number_field(:num_points, in: 1..10000) %></td>
-  	</tr>
-    <tr>
-      <th>Photo</th>
-      <td><%= f.file_field :photo %> </td>
-    </tr>
 
-  	</table>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Enter your new property details:
+          </h3>
+        </div>
+        <div class="panel-body">
 
-  	<div class="form-buttons">
-  		<%= submit_tag("Add") %>
-  	</div>
-  <% end %>
+          <%= bootstrap_form_for @property, url: {:controller => "properties", :action => "create"}, :html => { :multipart => true} do |f| %>
+          <table summary="properties form fields">
+            <tr>
+              <div class="form-group">
+                <th>Property name</th>
+                <td><%= f.text_field(:name, hide_label: true) %></td>
+              </div>
+            </tr>
+            <tr>
+              <div class="form-group">
+                <td><%= f.hidden_field(:user_id, :value => session[:user_id], :readonly => true) %></td>
+              </div>
+            </tr>
+            <tr>
+              <div class="form-group">
+                <th>Address</th>
+                <td><%= f.text_field(:address, hide_label: true) %></td>
+              </div>
+            </tr>
+            <tr>
+              <div class="form-group">
+                <th>City</th>
+                <td><%= f.text_field(:city, hide_label: true) %></td>
+              </div>
+            </tr>
+            <tr>
+              <div class="form-group">
+                <th>Country</th>
+                <td><%= f.text_field(:country, hide_label: true) %></td>
+              </div>
+            </tr>
+            <tr>
+              <div class="form-group">
+                <th>Number of rooms</th>
+                <td><%= f.number_field(:num_rooms, in: 1..20, hide_label: true) %></td>
+              </div>
+            </tr>
+            <tr>
+              <div class="form-group">
+                <th>Air-conditioned?</th>
+                <td><%= f.radio_button(:ac_available, "1") %>
+                  <%= f.label(:ac_available, "Yes") %> </td>
+                  <td> <%= f.radio_button(:ac_available, "0") %>
+                    <%= f.label(:ac_available, "No") %> </td>
+                  </td>
+                </div>
+              </tr>
+              <tr>
+                <div class="form-group">
+                  <th>Swimming Pool?</th>
+                  <td><%= f.radio_button(:pool_available, "1") %>
+                    <%= f.label(:pool_available, "Yes") %></td>
+                    <td><%= f.radio_button(:pool_available, "0") %>
+                      <%= f.label(:pool_available, "No") %></td>
+                    </td>
+                  </div>
+                </tr>
+                <tr>
+                  <div class="form-group">
+                    <th>Points required</th>
+                    <td><%= f.number_field(:num_points, in: 1..10000, hide_label: true) %></td>
+                  </div>
+                </tr>
+
+                <tr>
+                  <div class="form-group">
+                    <th>Photo</th>
+                    <td><%= f.file_field :photo, hide_label: true %> </td>
+                  </div>
+                </tr>
+
+              </table>
+
+            </div>
+            <div class="panel-footer">
+              <div class="btn btn-success">
+                <%= submit_tag("Add Property") %>
+              </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+    </div>
+  </div>
 </div>
+
