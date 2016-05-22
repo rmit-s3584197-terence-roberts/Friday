@@ -8,6 +8,8 @@ class ReservationController < ApplicationController
     @user = User.find_by_id(params[:user_id])
     @properties = Property.all.where(user_id: params[:user_id])
     @reservationsAsGuest = Reservation.all.where(user_id: params[:user_id])
+    @host = User.find_by_id(params[:host_id])
+    @guest = User.find_by_id(params[:guest_id])
 
   end
 
