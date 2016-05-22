@@ -7,7 +7,6 @@ class PropertiesController < ApplicationController
     @properties = Property.all.where(user_id: params[:user_id])
     @owner_id = params[:user_id]
     @host = User.find_by_id([@owner_id])
-    flash[:notice] = "@host.userpic.url is: #{@host.userpic.url}"
   end
 
   def show
@@ -20,10 +19,15 @@ class PropertiesController < ApplicationController
 
   def browseshow
     @properties = Property.find_by_id(params[:id])
+    @owner_id = params[:user_id]
+    @host = User.find_by_id([@owner_id])
   end
 
   def show_all
     @properties = Property.all
+    @property = Property.find_by_id(params[:id])
+    @owner_id = params[:user_id]
+    @host = User.find_by_id([@owner_id])
   end
 
   def feedback
@@ -53,15 +57,20 @@ class PropertiesController < ApplicationController
 
   def edit
     @property = Property.find_by_id(params[:id])
+    @owner_id = params[:user_id]
+    @host = User.find_by_id([@owner_id])
   end
 
   def update
-    @property = Property.find_by_id(params[:id])
+
+    @owner_id = params[:user_id]
+    @host = User.find_by_id([@owner_id])
 
     if @property.update_attributes(property_params)
       flash[:notice] = "Property updated successfully"
       redirect_to(:action => 'show', :id => @property.id)
     else
+      flash[:alert] = "Property not updated!"
       render('edit')
     end
   end

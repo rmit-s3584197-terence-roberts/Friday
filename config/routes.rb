@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get '/users/destroy' => 'user#destroy'
   post '/users/destroy' => 'user#destroy'
 
+  patch '/properties/update' => 'properties#update'
   get '/properties/update' => 'properties#update'
   get '/properties/destroy' => 'properties#destroy'
   get '/properties/delete' => 'properties#delete'
