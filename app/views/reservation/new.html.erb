@@ -1,19 +1,41 @@
 <div class="reservation new">
-  <h2>Book now</h2>
   <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-6 col-md-offset-3">
     </ul>
   </div>
-  <%= form_for(:reservation, :url => {:action => 'create'}) do |f| %>
 
-    <%= f.date_field :start_date %>
-    <%= f.hidden_field :property_id, :value => @property.id %>
-    <%= f.hidden_field :status, :value => "pending" %>
-    <%= f.hidden_field :user_id, :value => @guest.id %>
-    <br/>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 toppad" >
+        <div class="panel panel-info">
+          <div class="panel-heading"> Which Friday? </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-lg-12" align="center">
 
-    <%= f.submit "Send reservation request", class: "btn btn-primary"%>
-    <% end %>
+                Let's make sure <strong><%= @property.name.titleize() %></strong> is available.  Select the Friday you'll be staying:
 
+                <%= bootstrap_form_for(:reservation, :url => {:action => 'create'}) do |f| %>
+                  <div class="form-group">
+                  <%= f.date_field :start_date, :value => Date.today %>
+                  </div>
+                  <%= f.hidden_field :property_id, :value => @property.id %>
+                  <%= f.hidden_field :status, :value => "pending" %>
+                  <%= f.hidden_field :user_id, :value => @guest.id %>
+
+                <div class="panel-footer">
+                  <div align="center">
+                  <div class="form-group">
+                   <%= f.submit "Send reservation request", class: "btn btn-primary"%>
+                   </div>
+                   <% end %>
+                 </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>

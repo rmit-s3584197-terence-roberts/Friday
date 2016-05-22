@@ -1,5 +1,4 @@
 <div class="user edit">
-  <h2>Edit your profile</h2>
   
 <%= stylesheet_link_tag "login" %>
 <%= stylesheet_link_tag "user_details" %>
@@ -7,13 +6,13 @@
 <div class="container">
 <div class="col-lg-3 col-lg-6 col-lg-3">
   <div class="form-signin">
-  <h2 class="form-signin-heading">Edit your profile</h2>
+  <h2 class="form-signin-heading"></h2>
 
   <%= form_for(:user, :url => {:action => 'update', :id => @user.id}) do |f| %>
 
 <div class="container">
 	<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-0 toppad" >
+		<div class="col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 toppad" >
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<span class="pull-right">
