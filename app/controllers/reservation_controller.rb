@@ -61,7 +61,7 @@ class ReservationController < ApplicationController
       ReservationMailer.reservation_request_email(@host)
       redirect_to :controller => 'properties', :action => 'show', :id => @reservation.property_id
     else
-      flash[:notice] = "There was a problem submitting your request."
+      flash[:alert] = "There was a problem submitting your request."
       redirect_to :controller => 'properties', :action => 'show', :id => @reservation.property_id
     end
 

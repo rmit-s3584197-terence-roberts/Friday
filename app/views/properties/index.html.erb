@@ -27,10 +27,9 @@
 					<td><%= property.country %></td>
 					<td><%= property.city %></td>
 					<td class="actions">
-						<%= link_to("Show", {:action => 'show', :id => property.id}, :class => 'action show') %>
-						<%= link_to("Edit", {:action => 'edit', :id => property.id}, :class => 'action edit') %>
-						<%= link_to("Delete", {:action => 'delete', :id => property.id}, :class => 'action delete') %>
-
+					  <%= link_to("Show", {:action => 'show', :id => property.id, :user_id => user.id}, :class => 'btn btn-primary btn-xs') %>
+					  <%= link_to("Edit", {:action => 'edit', :id => property.id}, :class => 'btn btn-primary btn-xs') %>
+					  <%= link_to("Delete", {:action => 'delete', :id => property.id}, :class => 'btn btn-primary btn-xs') %> 
 					</td>
 				</tr>
 			</tbody>

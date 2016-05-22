@@ -20,13 +20,12 @@ class UserController < ApplicationController
       flash[:notice] = 'Welcome to Friday. You are now a member of our community!'
       redirect_to(:controller => 'main', :action => 'index')
     else
-      render("new")
+      render("main/signup")
     end
   end
 
   def edit
     @user = User.find_by_id(params[:id])
-    flash[:notice] = "User ID being passed is: #{@user.username}"
   end
 
   def update
@@ -36,7 +35,7 @@ class UserController < ApplicationController
       flash[:notice] = "User updated successfully"
       redirect_to(:action => 'show', :id => @user.id)
      else
-      flash[:notice] = "There was a problem updating your profile."
+      flash[:alert] = "There was a problem updating your profile."
       redirect_to :controller => 'user', :action => 'edit', :id => @user
     end
   end

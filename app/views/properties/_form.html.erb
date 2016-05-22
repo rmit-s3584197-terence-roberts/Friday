@@ -1,42 +1,38 @@
 <tr>
-      <th>Property name</th>
       <td><%= f.text_field(:name) %></td>
     </tr>
     <tr>
-      <th>Address</th>
       <td><%= f.text_field(:address) %></td>
     </tr>
     <tr>
-      <th>City</th>
       <td><%= f.text_field(:city) %></td>
     </tr>
     <tr>
-      <th>Country</th>
       <td><%= f.text_field(:country) %></td>
     </tr>
     <tr>
       <th>Number of rooms</th>
-      <td><%= f.number_field(:num_rooms, in: 1..20) %></td>
+      <td><%= f.number_field(:num_rooms, in: 1..20, :class => 'hidden') %></td>
     </tr>
     <tr>
       <th>Air-conditioned?</th>
       <td><%= f.radio_button(:ac_available, "1") %>
-          <%= f.label(:ac_available, "Yes") %>
+          <%= f.label(:ac_available, "Yes", :class => 'hidden') %>
           <%= f.radio_button(:ac_available, "0") %>
-          <%= f.label(:ac_available, "No") %>
+          <%= f.label(:ac_available, "No", :class => 'hidden') %>
       </td>
     </tr>
     <tr>
       <th>Swimming Pool?</th>
       <td><%= f.radio_button(:pool_available, "1") %>
-          <%= f.label(:pool_available, "Yes") %>
+          <%= f.label(:pool_available, "Yes", :class => 'hidden') %>
           <%= f.radio_button(:pool_available, "0") %>
-          <%= f.label(:pool_available, "No") %>
+          <%= f.label(:pool_available, "No", :class => 'hidden') %>
       </td>
     </tr>
     <tr>
       <th>Points required for reservation</th>
-      <td><%= f.number_field(:num_points, in: 1..10000) %></td>
+      <td><%= f.number_field(:num_points, in: 1..10000, :class => 'hidden') %></td>
     </tr>
     <tr>
       <th>Photo</th>

@@ -1,10 +1,54 @@
+<%= stylesheet_link_tag "show_property" %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+		<div class="container" style="background-image:url( <%= @property.photo.url %> ); !important">
+			<div class="jumbotron" style= "height: 600px background-image:url( <%= @property.photo.url %> ); !important">
+
+				<h2>
+					<%= @property.name.titleize() %> 
+				</h2>
+				<p>
+					<%= link_to("Book now!", {:controller => 'reservation', :action => 'new', :id => @property.id}, 
+					  class: "btn btn-primary btn-large") %>
+				</p>
+			</div>
+	        <br /><br />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+		<div align="center">
+		<br />
+			<%= image_tag @host.userpic.url, class: "img-circle img-responsive", height: '100', width: '110' if @host.userpic?%>
+			</div>
+		</div>
+		<div class="col-md-4">
+
+			<h2>
+				<%= @property.num_rooms.to_s %> bedroom house in <%= @property.city.titleize() %>
+			</h2>
+			<p>
+				Stay your way with <%= link_to @host.first_name.titleize() %>. You can find the exact location of this property by 
+				clicking here.  You can also reach out to  
+				<%= mail_to(@host.email(), @host.first_name.titleize()) %> for more information.
+			</p>
+		</div>
+		<div class="col-md-4">
+		<div align="center">
+		<br />
+		    <%= image_tag('rating.png', class: "img-rounded", height: '100', width: '110') %>
+		    </div>
+		</div>
+	</div>
+</div>
+
+
 <div class="user show">
-	<h2><%=  @property.name.titleize %> </h2>
+
 	<table summary="properties detail view">
 
-	<tr>
-		<td><%= image_tag @property.photo.url %></td>
-	</tr>
 	<tr>
 		<th>Address</th>
 		<td><%= @property.address.titleize + ", " + @property.city.titleize + ", " + @property.country.titleize %></td>
@@ -14,12 +58,8 @@
 		<td><%= @property.num_points %></td>
 	</tr>
 	<tr>
-		<th>Reviews</th>
-		<td><%= "..." %></td>
-	</tr>
-	<tr>
 		<th>Book this property</th>
-		<%= link_to("Book now!", {:controller => 'reservation', :action => 'new', :id => @property.id}) %>
+		
 	</tr>
 	</table>
 	<br />
