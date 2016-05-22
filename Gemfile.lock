@@ -58,6 +58,8 @@ GEM
       jquery-rails (>= 3.0)
       railties (>= 3.0)
     bootstrap_form (2.3.0)
+    bootstrap_validator_rails (1.1.0)
+      bootstrap_form (~> 2.0)
     builder (3.2.2)
     byebug (8.2.5)
     climate_control (0.0.3)
@@ -192,6 +194,7 @@ DEPENDENCIES
   bootstrap-sass
   bootstrap-validator-rails
   bootstrap_form
+  bootstrap_validator_rails
   byebug
   geocoder
   jbuilder (~> 2.0)
