@@ -10,7 +10,8 @@
 					<%= @property.name.titleize() %> 
 				</h2>
 				<p>
-					<%= link_to("Book now!", {:controller => 'reservation', :action => 'new', :id => @property.id}, class: "btn btn-primary btn-large") %>
+					<%= link_to("Book now!", {:controller => 'reservation', :action => 'new', :id => @property.id}, 
+					  class: "btn btn-primary btn-large") %>
 				</p>
 			</div>
 	        <br /><br />

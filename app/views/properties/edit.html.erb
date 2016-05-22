@@ -1,7 +1,9 @@
 <div class="property edit">
   <h2>Edit your property</h2>
 
-  <%= bootstrap_form_for @property, url: {:controller => 'properties', :action => 'update'}, :html => { :multipart => true} do |f| %>
+
+  <%= bootstrap_form_for :property, url: {:controller => 'properties', :action => 'update', :id => @property.id }, :html => { :multipart => true} do |f| %>
+
   <table summary="properties form fields">
 
     <tr>
@@ -85,7 +87,7 @@
       </table>
 
     <div class="panel-footer">
-        <%= f.submit "Edit Property", class: "btn btn-primary"%>
+        <%= f.submit "Edit Property", class: "btn btn-primary", :id => @property.id %>
     </div>
     </div>
     <% end %>

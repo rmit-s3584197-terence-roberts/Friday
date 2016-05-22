@@ -12,8 +12,8 @@ class PropertiesController < ApplicationController
   def show
 
     @property = Property.find_by_id(params[:id])
-    @owner_id = params[:user_id]
-    @host = User.find_by_id([@owner_id])
+    @owner_id = @property.user_id
+    @host = User.find_by_id(params[@owner_id])
 
   end
 
@@ -25,7 +25,7 @@ class PropertiesController < ApplicationController
 
   def show_all
     @properties = Property.all
-    @property = Property.find_by_id(params[:id])
+    @property = Property.find_by_id(params[:property_id])
     @owner_id = params[:user_id]
     @host = User.find_by_id([@owner_id])
   end
@@ -57,14 +57,16 @@ class PropertiesController < ApplicationController
 
   def edit
     @property = Property.find_by_id(params[:id])
+
+    flash[:alert] = "Property ID is: #{@property.id}"
+    
     @owner_id = params[:user_id]
     @host = User.find_by_id([@owner_id])
   end
 
   def update
 
-    @owner_id = params[:user_id]
-    @host = User.find_by_id([@owner_id])
+    @property = Property.find_by_id(params[:id])
 
     if @property.update_attributes(property_params)
       flash[:notice] = "Property updated successfully"
