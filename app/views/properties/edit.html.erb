@@ -2,7 +2,7 @@
   <h2>Edit your property</h2>
 
 
-  <%= bootstrap_form_for :property, url: {:controller => 'properties', :action => 'update', :id => @property.id }, :html => { :multipart => true} do |f| %>
+  <%= bootstrap_form_for @property, url: {:controller => 'properties', :action => 'update', :id => @property.id }, :html => { :multipart => true} do |f| %>
 
   <table summary="properties form fields">
 

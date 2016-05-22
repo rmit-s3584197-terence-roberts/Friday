@@ -5,6 +5,7 @@ class PropertiesController < ApplicationController
 
   def index
     @properties = Property.all.where(user_id: params[:user_id])
+    @property = Property.find_by_id(params[:id])
     @owner_id = params[:user_id]
     @host = User.find_by_id([@owner_id])
   end
@@ -56,10 +57,7 @@ class PropertiesController < ApplicationController
 
 
   def edit
-    @property = Property.find_by_id(params[:id])
-
-    flash[:alert] = "Property ID is: #{@property.id}"
-    
+    @property = Property.find_by_id(params[:id])    
     @owner_id = params[:user_id]
     @host = User.find_by_id([@owner_id])
   end
