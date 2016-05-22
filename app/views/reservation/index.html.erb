@@ -2,86 +2,81 @@
 
 	<table class="listing" summary = "reservations list">
 
-  <div class="panel panel-default">
-    <div class="panel-heading">My Friday Bookings</div>
+    <div class="panel panel-default">
+      <div class="panel-heading">My Friday Bookings</div>
 
-
-    <table class="table">
-      <thead>
-			<th>Property Name</th>
-			<th>Country</th>
-			<th>City</th>
-      <th>Start Date</th>
-      <th>Status</th>
-		</tr>
-		<% @reservationsAsGuest.each do |reservation| %>
-		<% property = Property.find_by_id(reservation.property_id) %>
-		<tr>
-			<td><%= property.name %></td>
-			<td><%= property.country %></td>
-			<td><%= property.city %></td>
-      <td><%= reservation.start_date %></td>
-      <td><%= reservation.status %></td>
-			<td class="actions">
-<<<<<<< HEAD
-        <% if (reservation.status == "accepted") %>
-          <%= link_to("Leave feedback", {:action => 'propertyFeedback', :reservation_id => reservation.id}, :class => 'btn btn-primary btn-xs') %>
-=======
-        <% if (reservation.status == "accepted" && reservation.property_rating == nil) %>
-          <%= link_to("Leave feedback", {:action => 'propertyFeedback', :reservation_id => reservation.id}) %>
->>>>>>> origin/master
+      <table class="table">
+        <thead>
+         <th>Property Name</th>
+         <th>Country</th>
+         <th>City</th>
+         <th>Start Date</th>
+         <th>Status</th>
+       </tr>
+       <% @reservationsAsGuest.each do |reservation| %>
+       <% property = Property.find_by_id(reservation.property_id) %>
+       <tr>
+         <td><%= property.name %></td>
+         <td><%= property.country %></td>
+         <td><%= property.city %></td>
+         <td><%= reservation.start_date %></td>
+         <td><%= reservation.status %></td>
+         <td class="actions">
+            <% if (reservation.status == "accepted") %>
+            <%= link_to("Leave feedback", {:action => 'propertyFeedback', :reservation_id => reservation.id}, :class => 
+              'btn btn-primary btn-xs') %>
+              <% if (reservation.status == "accepted" && reservation.property_rating == nil) %>
+              <%= link_to("Leave feedback", {:action => 'propertyFeedback', :reservation_id => reservation.id}) %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
         <% end %>
-      </td>
-		</tr>
-		<% end %>
-	</table>
+        </thead>
+         </table>
+      </div>
 </br>
 </br>
 </br>
-<<<<<<< HEAD
 
+<div class="panel panel-default">
+  <div class="panel-heading">My Properties</div>
+  <div class="panel-body">
 
-  <div class="panel panel-default">
-    <div class="panel-heading">My Properties</div>
-    <div class="panel-body">
-=======
-<h2> Bookings for your properties </h2>
->>>>>>> origin/master
-
-  <table class="listing" summary = "reservations list">
-    <table class="table">
-      <thead>
-			<th>Property Name</th>
-			<th>Country</th>
-			<th>City</th>
-      <th>Start Date</th>
-      <th>Status</th>
-		</tr>
-		<% @properties.each do |property| %>
-		<% reservations = Reservation.all.where(property_id: property.id) %>
-    <% reservations.each do |reservation| %>
-		<tr>
-			<td><%= property.name %></td>
-			<td><%= property.country %></td>
-			<td><%= property.city %></td>
-      <td><%= reservation.start_date %></td>
-      <td><%= reservation.status %></td>
-			<td class="actions">
-      <% if (reservation.status == "pending") %>
-        <%= link_to("Accept", {:action => 'accept', :property_id => reservation.property_id, :reservation_id => reservation.id, :host_id => property.user_id, :guest_id => reservation.user_id},:class => 'btn btn-success btn-xs') %>
-        <%= link_to("Reject", {:action => 'reject', :property_id => reservation.property_id, :reservation_id => reservation.id, :host_id => property.user_id, :guest_id => reservation.user_id},:class => 'btn btn-danger btn-xs') %>
+    <table class="listing" summary = "reservations list">
+      <table class="table">
+        <thead>
+         <th>Property Name</th>
+         <th>Country</th>
+         <th>City</th>
+         <th>Start Date</th>
+         <th>Status</th>
+       </tr>
+       <% @properties.each do |property| %>
+       <% reservations = Reservation.all.where(property_id: property.id) %>
+       <% reservations.each do |reservation| %>
+       <tr>
+         <td><%= property.name %></td>
+         <td><%= property.country %></td>
+         <td><%= property.city %></td>
+         <td><%= reservation.start_date %></td>
+         <td><%= reservation.status %></td>
+         <td class="actions">
+          <% if (reservation.status == "pending") %>
+          <%= link_to("Accept", {:action => 'accept', :property_id => reservation.property_id, :reservation_id => reservation.id, :host_id => property.user_id, :guest_id => reservation.user_id},:class => 
+            'btn btn-success btn-xs') %>
+          <%= link_to("Reject", {:action => 'reject', :property_id => reservation.property_id, :reservation_id => reservation.id, :host_id => property.user_id, :guest_id => reservation.user_id},:class => 
+            'btn btn-danger btn-xs') %>
+          <% end %>
+          <% if (reservation.status == "accepted") %>
+          <%= link_to("Leave feedback", {:action => 'userRating', :reservation_id => reservation.id, :guest_id => reservation.user_id}, :class => 'btn btn-primary btn-xs') %>
+        </td>
+      </tr>
+          <% end %>
+          <% end %>
       <% end %>
-<<<<<<< HEAD
-      <% if (reservation.status == "accepted") %>
-        <%= link_to("Leave feedback", {:action => 'userRating', :reservation_id => reservation.id, :guest_id => reservation.user_id}, :class => 'btn btn-primary btn-xs') %>
-=======
-      <% if (reservation.status == "accepted" && reservation.guest_rating == nil) %>
-        <%= link_to("Leave feedback", {:action => 'userRating', :reservation_id => reservation.id, :guest_id => reservation.user_id}) %>
->>>>>>> origin/master
-      <% end %>
-      </td>
-		</tr>
-    <% end %>
-    <% end %>
-	</table>
+    </thead>
+  </table>
+</div> 
+</table>
 </div>
