@@ -16,12 +16,23 @@ class UserController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user_id = @user.id
+    @new_user = User.find_by_id(@user.id)
+
     if @user.save
       flash[:notice] = 'Welcome to Friday. You are now a member of our community!'
-      redirect_to(:controller => 'main', :action => 'index')
     else
       render("main/signup")
     end
+
+    if @new_user && @new_user.authenticate(params[:password])
+        # session[:user_id] is the syntax used to store the user's ID in the cookie!
+        session[:user_id] = @new_user.id
+         redirect_to(:controller => 'main', :action => 'index')
+    else
+        redirect_to '/main/login'
+    end
+     
   end
 
   def edit
