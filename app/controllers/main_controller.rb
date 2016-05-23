@@ -8,6 +8,8 @@ class MainController < ApplicationController
 
   def browse
     @properties = Property.all
+    offset = rand(Property.count)
+    @property = Property.offset(offset).first
   end
 
   def show

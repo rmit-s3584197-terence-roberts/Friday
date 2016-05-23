@@ -11,6 +11,26 @@
   src: url("http://s3.amazonaws.com/codecademy-content/courses/ltp/fonts/shift-bold.woff") format("woff");
 }
 
+
+.post-content {
+    background: none repeat scroll 0 0 #FFffff;
+    opacity: 0.5;
+    margin: 0 auto;
+    margin-top: -100px;
+    text-align:center;
+    position: relative;
+    width:60%;    
+}
+
+.thumbnail {
+    margin:0 auto;
+    text-align:center;
+}
+
+.wrapper {
+    text-align:center;
+}
+
 .navbar-header {
   padding-top: 10px;
 }
