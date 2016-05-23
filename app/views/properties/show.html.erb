@@ -43,7 +43,7 @@
 		<div align="center">
 		<br />
 		    <%= image_tag('rating.png', class: "img-rounded", height: '100', width: '110') %><p>
-		    <strong>Average Rating:</strong><p><%= @property.rating %>  Star!
+		    <strong><%= "Average Rating: #{@property.rating} Star!" if @property.rating?%></strong>
 		    </div>
 		</div>
 	</div>
