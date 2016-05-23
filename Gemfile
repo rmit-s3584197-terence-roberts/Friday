@@ -23,6 +23,7 @@ gem 'geocoder'
 gem 'tzinfo-data'
 gem 'bootstrap_form'
 gem 'bootstrap-validator-rails'
+gem 'bootstrap_validator_rails'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc

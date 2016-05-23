@@ -8,6 +8,8 @@ class ReservationController < ApplicationController
     @user = User.find_by_id(params[:user_id])
     @properties = Property.all.where(user_id: params[:user_id])
     @reservationsAsGuest = Reservation.all.where(user_id: params[:user_id])
+    @host = User.find_by_id(params[:host_id])
+    @guest = User.find_by_id(params[:guest_id])
 
   end
 
@@ -19,12 +21,13 @@ class ReservationController < ApplicationController
   def enterRating
     @reservation = Reservation.find_by_id(params[:reservation_id])
     @user = User.find_by_id(params[:user_id])
-    @allReservations = Reservation.all.where(user_id: params[:user_id])
 
     @reservation.update_attribute(:guest_rating, params[:reservation][:guest_rating])
 
+    @allReservations = Reservation.all.where(user_id: params[:user_id]).where.not(guest_rating: nil)
+
     sumratings = 0
-    @allReservations.each{|x| sumratings=sumratings+x[:guest_rating]};
+    @allReservations.each{|x| sumratings = sumratings + x[:guest_rating]};
     @user.update_attribute(:rating, (sumratings/@allReservations.length))
     redirect_to(:controller => 'reservation', :action => 'index', :user_id => @user.id)
   end
@@ -36,33 +39,33 @@ class ReservationController < ApplicationController
   def enterFeedback
     @reservation = Reservation.find_by_id(params[:reservation_id])
     @property = Property.find_by_id(params[:property_id])
-    @allReservations = Reservation.all.where(property_id: params[:property_id])
 
     @reservation.update_attribute(:property_rating, params[:reservation][:property_rating])
 
+    @allReservations = Reservation.all.where(property_id: params[:property_id]).where.not(property_rating: nil)
     sumratings = 0
-    @allReservations.each{|x| sumratings=sumratings+x[:property_rating]};
+    @allReservations.each{|x| sumratings = sumratings + x[:property_rating]};
     @property.update_attribute(:rating, (sumratings/@allReservations.length))
     redirect_to(:controller => 'reservation', :action => 'index', :user_id => session[:user_id])
   end
 
   def new
-  	@property = Property.find_by_id(params[:id])
+  	@property = Property.find_by_id(params[:property_id])
     @guest = User.find_by_id(session[:user_id])
   end
 
   def create
     @reservation = Reservation.new(reservation_params)
-    @property = Property.find_by_id(@reservation.property_id)
+    @property = Property.find_by_id(params[:property_id])
     @host = User.find_by_id(@property.user_id)
 
     if @reservation.save
       flash[:notice] = "Your request has been submitted."
       ReservationMailer.reservation_request_email(@host)
-      redirect_to :controller => 'properties', :action => 'show', :id => @reservation.property_id
+      redirect_to :controller => 'properties', :action => 'show', :id => @property.id
     else
       flash[:alert] = "There was a problem submitting your request."
-      redirect_to :controller => 'properties', :action => 'show', :id => @reservation.property_id
+      redirect_to :controller => 'properties', :action => 'show', :id => @property.id
     end
 
   end
@@ -115,6 +118,6 @@ class ReservationController < ApplicationController
 
   private
     def reservation_params
-      params.require(:reservation).permit(:start_date, :property_id, :status, :user_id, :guest_rating, :property_rating)
+      params.require(:reservation).permit(:start_date, :status, :feedback, :user_id, :property_id,  :guest_rating, :property_rating)
     end
 end

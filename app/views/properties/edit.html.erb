@@ -8,51 +8,59 @@
 
     <tr>
       <div class="form-group">
-        <th>Property name</th>
+        <th>Property name: </th>
+        <td></td>
         <td><%= f.text_field(:name, hide_label: true) %></td>
       </div>
     </tr>
 
     <tr>
       <div class="form-group">
+      <td></td>
         <td><%= f.hidden_field(:id, :readonly => true) %></td>
       </div>
     </tr>
 
     <tr>
       <div class="form-group">
+      <td></td>
         <td><%= f.hidden_field(:user_id, :value => session[:user_id], :readonly => true) %></td>
       </div>
     </tr>
 
     <tr>
       <div class="form-group">
-        <th>Address</th>
+        <th>Address: </th>
+        <td></td>
         <td><%= f.text_field(:address, hide_label: true) %></td>
       </div>
     </tr>
     
     <tr>
       <div class="form-group">
-        <th>City</th>
+        <th>City: </th>
+        <td></td>
         <td><%= f.text_field(:city, hide_label: true) %></td>
       </div>
     </tr>
     <tr>
       <div class="form-group">
-        <th>Country</th>
+        <th>Country: </th>
+        <td></td>
         <td><%= f.text_field(:country, hide_label: true) %></td>
       </div>
     </tr>
     <tr>
       <div class="form-group">
-        <th>Number of rooms</th>
+        <th>Number of rooms: </th>
+        <td></td>
         <td><%= f.number_field(:num_rooms, in: 1..20, hide_label: true) %></td>
       </div>
     </tr>
     <tr>
       <div class="form-group">
-        <th>Air-conditioned?</th>
+        <th>Air-conditioned? </th>
+        <td></td>
         <td><%= f.radio_button(:ac_available, "1") %>
           <%= f.label(:ac_available, "Yes") %> </td>
           <td> <%= f.radio_button(:ac_available, "0") %>
@@ -62,7 +70,8 @@
       </tr>
       <tr>
         <div class="form-group">
-          <th>Swimming Pool?</th>
+          <th>Swimming Pool? </th>
+          <td></td>
           <td><%= f.radio_button(:pool_available, "1") %>
             <%= f.label(:pool_available, "Yes") %></td>
             <td><%= f.radio_button(:pool_available, "0") %>
@@ -72,14 +81,16 @@
         </tr>
         <tr>
           <div class="form-group">
-            <th>Points required</th>
+            <th>Points required: </th>
+            <td></td>
             <td><%= f.number_field(:num_points, in: 1..10000, hide_label: true) %></td>
           </div>
         </tr>
 
         <tr>
           <div class="form-group">
-            <th>Photo</th>
+            <th>Photo: </th>
+            <td></td>
             <td><%= f.file_field :photo, hide_label: true %> </td>
           </div>
         </tr>

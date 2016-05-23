@@ -56,7 +56,7 @@ class PropertiesController < ApplicationController
 
 
   def edit
-    @property = Property.find_by_id(params[:id])    
+    @property = Property.find_by_id(params[:id])
     @owner_id = params[:user_id]
     @host = User.find_by_id([@owner_id])
   end

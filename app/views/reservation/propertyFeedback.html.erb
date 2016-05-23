@@ -1,26 +1,42 @@
 <div class="proeprty feedback">
-  <h2>Leave feedback</h2>
+<br />
+  <%= bootstrap_form_for(:reservation, :url => {:action => 'enterFeedback', :reservation_id => @reservation.id, :property_id => @reservation.property_id}) do |f| %>
+  <div class="panel panel-default">
+     <div class="panel-heading">Leave Feedback</div>
+     <div class="panel-body">
+     <div class="col-lg-12"> 
+    <table class="table table-user-information">
 
-  <%= form_for(:reservation, :url => {:action => 'enterFeedback', :reservation_id => @reservation.id, :property_id => @reservation.property_id}) do |f| %>
-  <table summary="feedback form fields">
     <tr>
-      <th>Rating</th>
       <td>
-          <%= f.radio_button(:property_rating, 1.0) %>
           <%= f.label(:property_rating, "1") %>
-          <%= f.radio_button(:property_rating, 2.0) %>
+          <%= f.radio_button(:property_rating, 1.0) %>
+          </td>
+          <td>
           <%= f.label(:property_rating, "2") %>
-          <%= f.radio_button(:property_rating, 3.0) %>
+          <%= f.radio_button(:property_rating, 2.0) %>
+          </td>
+          <td>
           <%= f.label(:property_rating, "3") %>
-          <%= f.radio_button(:property_rating, 4.0) %>
+          <%= f.radio_button(:property_rating, 3.0) %>
+          </td>
+          <td>
           <%= f.label(:property_rating, "4") %>
-          <%= f.radio_button(:property_rating, 5.0) %>
+          <%= f.radio_button(:property_rating, 4.0) %>
+          </td>
+          <td>
           <%= f.label(:property_rating, "5") %>
-        </td>
+          <%= f.radio_button(:property_rating, 5.0) %>
+          </td>
       </tr>
   </table>
-  	<div class="form-buttons">
-  		<%= submit_tag("Submit") %>
+  </div>
+</div>
+  <div class="panel-footer">
+    <div align="center">
+      <div class="form-group">
+
+  		<%= f.submit "Submit Rating", class: "btn btn-primary"%>
   	</div>
   <% end %>
 </div>
