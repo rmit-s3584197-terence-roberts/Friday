@@ -56,8 +56,9 @@ class ReservationController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @property = Property.find_by_id(params[:property_id])
     @host = User.find_by_id(@property.user_id)
+    @guest = User.find_by_id(session[:user_id])
 
-    if @property.user_id == @host.id
+    if @property.user_id == @guest.id
       flash[:alert] = "You can't book your own property!"
       redirect_to :controller => 'properties', :action => 'show', :id => @property.id and return
     end
