@@ -19,9 +19,15 @@
                   <div class="form-group">
                   <%= f.date_field :start_date, :value => Date.today %>
                   </div>
+                  <div class="form-group">
                   <%= f.hidden_field :property_id, :value => @property.id %>
+                  </div>
+                  <div class="form-group">
                   <%= f.hidden_field :status, :value => "pending" %>
+                  </div>
+                  <div class="form-group">
                   <%= f.hidden_field :user_id, :value => @guest.id %>
+                  </div>
 
                 <div class="panel-footer">
                   <div align="center">
