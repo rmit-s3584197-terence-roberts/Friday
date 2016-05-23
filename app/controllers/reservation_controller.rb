@@ -8,8 +8,6 @@ class ReservationController < ApplicationController
     @user = User.find_by_id(params[:user_id])
     @properties = Property.all.where(user_id: params[:user_id])
     @reservationsAsGuest = Reservation.all.where(user_id: params[:user_id])
-    @host = User.find_by_id(params[:host_id])
-    @guest = User.find_by_id(params[:guest_id])
 
   end
 
@@ -29,7 +27,7 @@ class ReservationController < ApplicationController
     sumratings = 0
     @allReservations.each{|x| sumratings = sumratings + x[:guest_rating]};
     @user.update_attribute(:rating, (sumratings/@allReservations.length))
-    redirect_to(:controller => 'reservation', :action => 'index', :user_id => @user.id)
+    redirect_to(:controller => 'reservation', :action => 'index', :user_id => session[:user_id])
   end
 
   def propertyFeedback
@@ -50,7 +48,7 @@ class ReservationController < ApplicationController
   end
 
   def new
-  	@property = Property.find_by_id(params[:property_id])
+    @property = Property.find_by_id(params[:property_id])
     @guest = User.find_by_id(session[:user_id])
   end
 
@@ -59,6 +57,11 @@ class ReservationController < ApplicationController
     @property = Property.find_by_id(params[:property_id])
     @host = User.find_by_id(@property.user_id)
 
+    if @property.user_id == @host.id
+      flash[:alert] = "You can't book your own property!"
+      redirect_to :controller => 'properties', :action => 'show', :id => @property.id and return
+    end
+    
     if @reservation.save
       flash[:notice] = "Your request has been submitted."
       ReservationMailer.reservation_request_email(@host)
@@ -118,6 +121,6 @@ class ReservationController < ApplicationController
 
   private
     def reservation_params
-      params.require(:reservation).permit(:start_date, :status, :feedback, :user_id, :property_id,  :guest_rating, :property_rating)
+      params.require(:reservation).permit(:start_date, :status, :user_id, :property_id,  :guest_rating, :property_rating)
     end
 end
