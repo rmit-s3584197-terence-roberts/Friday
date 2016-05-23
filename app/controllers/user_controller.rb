@@ -20,9 +20,9 @@ class UserController < ApplicationController
     @new_user = User.find_by_id(@user.id)
 
     if @user.save
-      flash[:notice] = 'Welcome to Friday. You are now a member of our community!'
+      flash[:notice] = 'Welcome to Friday. You are now a member of our community! Log in to start your next Friday, today!'
     else
-      render("main/signup")
+      render("main/signup") and return
     end
 
     if @new_user && @new_user.authenticate(params[:password])
