@@ -23,13 +23,9 @@
          <td><%= reservation.start_date %></td>
          <td><%= reservation.status %></td>
          <td class="actions">
-            <% if (reservation.status == "accepted") %>
+            <% if (reservation.status == "accepted") && reservation.property_rating == nil %>
             <%= link_to("Leave feedback for Host", {:action => 'propertyFeedback', :reservation_id => reservation.id}, :class => 
               'btn btn-primary btn-xs') %>
-              <% if (reservation.status == "accepted" && reservation.property_rating == nil) %>
-              <%= link_to("Leave feedback for Host", {:action => 'propertyFeedback', :reservation_id => reservation.id}, :class =>
-              'btn btn-primary btn-xs') %>
-              <% end %>
             <% end %>
           </td>
         </tr>
@@ -70,7 +66,7 @@
           <%= link_to("Reject", {:action => 'reject', :property_id => reservation.property_id, :reservation_id => reservation.id, :host_id => property.user_id, :guest_id => reservation.user_id},:class => 
             'btn btn-danger btn-xs') %>
           <% end %>
-          <% if (reservation.status == "accepted") %>
+          <% if (reservation.status == "accepted" && reservation.guest_rating == nil) %>
           <%= link_to("Leave feedback for Guest", {:action => 'userRating', :reservation_id => reservation.id, :guest_id => reservation.user_id}, :class => 'btn btn-primary btn-xs') %>
         </td>
       </tr>
